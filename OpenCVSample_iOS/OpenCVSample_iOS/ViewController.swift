@@ -1,0 +1,514 @@
+//
+//  ViewController.swift
+//  OpenCVSample_iOS
+//
+//  Created by Hiroki Ishiura on 2020/01/04.
+//  Copyright © 2020 Hiroki Ishiura. All rights reserved.
+//
+
+import UIKit
+import Foundation
+import AVFoundation
+import QuartzCore
+
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+	
+    @IBOutlet weak var countDownLabel: UILabel!
+    @IBOutlet weak var startBtn: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var readyText: UILabel!
+    
+    var player: AVAudioPlayer?
+	var session: AVCaptureSession!
+	var device: AVCaptureDevice!
+	var output: AVCaptureVideoDataOutput!
+    var s1: Float!
+    var firstFrameImg: UIImage!
+    var resultImg: UIImage!
+    var firstFrame: Bool!
+    var hasStarted: Bool!
+    var showingResult: Bool!
+    var isPlaying: Bool!
+    var zoomLevel: CGFloat!
+    var playType: String!
+    var shotsCount: Int32!
+    var timer: Timer?
+    
+    var XYArray: [CGPoint] = []
+    var roundsCount: Int32!
+    var totalRounds: Int32!
+    var timePerRound: Double!
+    var elapsedTime: Double!
+    var timeNow: Double!
+    var timedCountStarted: Bool!
+    var timedShots: Bool! = false
+    var preTimerHasRan: Bool! = false
+    var timerHasRan: Bool! = false
+    var timerCount: Int!
+    var timerPre: Timer?
+    var timerPreHasStarted: Bool! = false
+    var mainTimerRan: Bool! = false
+    @objc func setPlayType(_ value: Bool) {
+        self.timedShots = value
+        self.playType = "TimedShots"
+        print("TIMEDSHOT set")
+        self.timerCount = 5
+    }
+	override func viewDidLoad() {
+		super.viewDidLoad()
+        s1 = 1.0
+        zoomLevel = 1
+        shotsCount = 0
+        firstFrame = true
+        hasStarted = false
+        showingResult = false
+        isPlaying = false
+        timerHasRan = false
+        preTimerHasRan = false
+        timedCountStarted = false
+        timerCount = 5
+        playType = ""
+        timerPre = nil
+        self.countDownLabel.text = ""
+		// Prepare a video capturing session.
+		self.session = AVCaptureSession()
+		self.session.sessionPreset = AVCaptureSession.Preset.vga640x480 // not work in iOS simulator
+		guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back) else {
+			print("no device")
+			return
+		}
+        let newXY = CGPoint(x: 0, y: 0)
+        
+        
+        XYArray.append(newXY)
+        XYArray.append(newXY)
+        XYArray.append(newXY)
+        XYArray.append(newXY)
+        XYArray.append(newXY)
+        XYArray.append(newXY)
+        XYArray.append(newXY)
+        XYArray.append(newXY)
+        XYArray.append(newXY)
+        XYArray.append(newXY)
+        
+		self.device = device
+		do {
+			let input = try AVCaptureDeviceInput(device: self.device)
+			self.session.addInput(input)
+		} catch {
+			print("no device input")
+			return
+		}
+		self.output = AVCaptureVideoDataOutput()
+		self.output.videoSettings = [ kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA) ]
+		let queue: DispatchQueue = DispatchQueue(label: "videocapturequeue", attributes: [])
+		self.output.setSampleBufferDelegate(self, queue: queue)
+		self.output.alwaysDiscardsLateVideoFrames = true
+		if self.session.canAddOutput(self.output) {
+			self.session.addOutput(self.output)
+		} else {
+			print("could not add a session output")
+			return
+		}
+		do {
+			try self.device.lockForConfiguration()
+			self.device.activeVideoMinFrameDuration = CMTimeMake(value: 1, timescale:60) // 20 fps'
+            self.device.videoZoomFactor = self.zoomLevel
+            self.device.exposureMode = .locked
+			self.device.unlockForConfiguration()
+		} catch {
+			print("could not configure a device")
+			return
+		}
+
+		self.session.startRunning()
+	}
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let currentValue = sender.value
+        s1 = currentValue
+        valueLabel.text = "\(currentValue)"
+    }
+    
+    @IBAction func ZoomInBtn(_ sender: UIButton) {
+        do {
+            self.zoomLevel += 0.3
+            if(self.zoomLevel >= 7){ self.zoomLevel = 7.0 }
+            print("\(self.zoomLevel)")
+            try self.device.lockForConfiguration()
+            self.device.activeVideoMinFrameDuration = CMTimeMake(value: 1, timescale:60) // 20 fps'
+            self.device.videoZoomFactor = self.zoomLevel
+            self.device.exposureMode = .locked
+            self.device.unlockForConfiguration()
+        } catch {
+            print("could not configure a device")
+            return
+        }
+
+    }
+    
+    @IBAction func ZoomOutBtn(_ sender: UIButton) {
+        do {
+            self.zoomLevel -= 0.3
+            if(self.zoomLevel <= 1.0){ self.zoomLevel = 1.0 }
+            print("\(self.zoomLevel)")
+            try self.device.lockForConfiguration()
+            self.device.activeVideoMinFrameDuration = CMTimeMake(value: 1, timescale:60) // 20 fps'
+            self.device.videoZoomFactor = self.zoomLevel
+            self.device.exposureMode = .locked
+            self.device.unlockForConfiguration()
+        } catch {
+            print("could not configure a device")
+            return
+        }
+
+    }
+    
+    
+    @IBAction func settings(_ sender: UIButton) {
+    
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondVC = storyboard.instantiateViewController(identifier: "TimedShotPopupViewController")
+
+        show(secondVC, sender: self)
+    }
+    
+    @IBAction func startShoot(_ sender: Any) {
+        
+       
+        self.playType = "10Shots"
+        self.playType = "TimedShots"
+        var countDown = 3
+        self.shotsCount = 0
+        if(startBtn.currentAttributedTitle?.string == "Start"){
+            
+            let copperFont = UIFont(name: "Copperplate", size: 24)!
+            let boldCopperFontDescriptor = copperFont.fontDescriptor.withSymbolicTraits(.traitBold)!
+            let boldCopperFont = UIFont(descriptor: boldCopperFontDescriptor, size: 24)
+
+            let attributedString = NSAttributedString(string: "Stop", attributes: [.font: boldCopperFont])
+            self.startBtn.setAttributedTitle(attributedString, for: .normal)
+            self.showingResult = false
+            if(self.playType == "10Shots"){
+                if(self.timer != nil){
+                    self.timer?.invalidate()
+                }
+                self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {timer in
+                    // Handle timer tick here
+                    self.countDownLabel.text = "\(countDown)"
+                    if(countDown == 0){
+                        self.timer?.invalidate()
+                        self.hasStarted = true
+                        self.countDownLabel.text = ""
+                        self.showingResult = false
+                        self.firstFrame = true
+                        
+
+
+                    }
+                    countDown -= 1
+                }
+
+                // Start the timer
+                timer?.fire()
+            }else if (self.playType == "TimedShots"){
+                    
+                    let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                            // Handle timer tick here
+                        if(self.timerCount == 0){
+                            self.readyText.isHidden = true
+                            print("TIMER FINISHED")
+                            //self.mainTimerRan
+                            self.preTimerHasRan = true
+                            self.countDownLabel.text = ""
+                            self.hasStarted = true
+                            self.showingResult = false
+                            self.firstFrame = true
+                            //timer.invalidate()
+                                    if(self.preTimerHasRan){
+                                        self.preTimerHasRan = false
+                                        self.timerCount = -1
+                                        var seed = Int.random(in: 100..<500)
+                                        let randTime = 1.0 + Double(seed / 1000)
+                                        let timerPause = Timer.scheduledTimer(withTimeInterval: randTime, repeats: false) { timerPause in
+                                            // Handle timer tick here
+                                            self.playBeep()
+                                            self.timeNow = CACurrentMediaTime() * 1000.0
+                                            self.timerHasRan = true
+                                            timerPause.invalidate()
+
+                                        }
+                                        timerPause.fire()
+                                  }
+                        }else if (self.timerCount > 0){
+                                self.readyText.isHidden = false
+                                self.countDownLabel.text = "\(self.timerCount!)"
+                                self.timerCount = self.timerCount - 1
+                                print("\(self.timerCount!)")
+                        }
+                            
+
+                    }
+                    timer.fire()
+                
+                
+                
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+//                        timer.invalidate()
+//                    }
+
+ 
+            }
+
+            
+
+
+            
+        }else if(startBtn.currentAttributedTitle?.string == "Stop"){
+            if(self.timer != nil) {
+                self.timer?.invalidate()
+            }
+            let copperFont = UIFont(name: "Copperplate", size: 24)!
+            let boldCopperFontDescriptor = copperFont.fontDescriptor.withSymbolicTraits(.traitBold)!
+            let boldCopperFont = UIFont(descriptor: boldCopperFontDescriptor, size: 24)
+
+            let attributedString = NSAttributedString(string: "Start", attributes: [.font: boldCopperFont])
+            self.startBtn.setAttributedTitle(attributedString, for: .normal)
+            self.hasStarted = false
+            self.showingResult = false
+            self.firstFrame = true
+            self.countDownLabel.text = ""
+
+        }
+    }
+    
+    
+	override var shouldAutorotate: Bool {
+		return false
+	}
+    func playSound() {
+        guard let url = Bundle.main.url(forResource: "gunshot", withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    func playBeep() {
+        guard let url = Bundle.main.url(forResource: "beep", withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+		// Convert a captured image buffer to UIImage.
+		guard let buffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+			print("could not get a pixel buffer")
+			return
+		}
+		CVPixelBufferLockBaseAddress(buffer, CVPixelBufferLockFlags.readOnly)
+        //let image = CIImage(cvPixelBuffer: buffer).oriented(CGImagePropertyOrientation.right)
+        let image = CIImage(cvPixelBuffer: buffer)
+		let capturedImage = UIImage(ciImage: image)
+		CVPixelBufferUnlockBaseAddress(buffer, CVPixelBufferLockFlags.readOnly)
+        if(hasStarted){
+            
+            if(firstFrame){
+                //save first frame
+                firstFrameImg = capturedImage
+                firstFrame = false
+            }else{
+                if(self.playType == "10Shots"){
+                    let detected = OpenCV.detectLaser(capturedImage, withH: s1)
+                    if (detected && !self.showingResult && self.shotsCount < 9){
+                        print("Detected")
+                        self.isPlaying = false
+                        self.showingResult = true
+                        self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: firstFrameImg, withXYArray: &XYArray, with: shotsCount)
+                        shotsCount = shotsCount + 1
+                        print("\(XYArray)")
+                        // Create a timer that fires every second and repeats indefinitely
+                        var counterSec = 0
+                        
+                        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                            // Handle timer tick here
+                            counterSec += 1
+
+
+                            if(counterSec == 5) {
+                                timer.invalidate()
+                                //print("Timer stopped")
+                            }
+                            print("Countersec \(counterSec)")
+                        }
+                        timer.fire()
+    //                    // Schedule a task to stop the timer after 3 seconds
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                            timer.invalidate()
+                            print("Timer stopped")
+                            self.isPlaying = false
+                            self.showingResult = false
+                        }
+                        
+                    }else if(detected && !self.showingResult && self.shotsCount == 9){
+                        print("Detected ALL 10")
+                        self.isPlaying = false
+                        self.showingResult = true
+                        self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: firstFrameImg, withXYArray: &XYArray, with: shotsCount) //call at least one more time
+                        self.resultImg = OpenCV.show10Results(capturedImage, withOrigFrame: firstFrameImg, withXYArray: &XYArray)
+                        shotsCount = shotsCount + 1
+                        print("\(XYArray)")
+                        // Create a timer that fires every second and repeats indefinitely
+                        var counterSec = 0
+                        
+                        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                            // Handle timer tick here
+                            counterSec += 1
+
+
+                            if(counterSec == 5) {
+                                timer.invalidate()
+                                //print("Timer stopped")
+                            }
+                        }
+                        timer.fire()
+    //                    // Schedule a task to stop the timer after 3 seconds
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                            timer.invalidate()
+                            print("Timer stopped")
+                            self.isPlaying = false
+                            self.showingResult = false
+                            self.hasStarted = false
+                            let copperFont = UIFont(name: "Copperplate", size: 24)!
+                            let boldCopperFontDescriptor = copperFont.fontDescriptor.withSymbolicTraits(.traitBold)!
+                            let boldCopperFont = UIFont(descriptor: boldCopperFontDescriptor, size: 24)
+
+                            let attributedString = NSAttributedString(string: "Start", attributes: [.font: boldCopperFont])
+                            self.startBtn.setAttributedTitle(attributedString, for: .normal)
+                            self.hasStarted = false
+                            self.showingResult = false
+                            self.countDownLabel.text = ""
+
+                        }
+
+                    }
+                    DispatchQueue.main.async(execute: {
+                        if(self.showingResult != true) {
+                            self.imageView.image = capturedImage
+                        } else {
+                            self.imageView.image = self.resultImg
+                            if(!self.isPlaying){
+                                self.isPlaying = true
+                                self.playSound()
+
+                            }
+                        }
+                            
+                    })
+                }else if (self.playType == "TimedShots"){
+
+                    //print("Timed Shot Started")
+                    
+
+                    
+                    if(timerHasRan){
+                        let detected = OpenCV.detectLaser(capturedImage, withH: s1)
+                        if (detected && !self.showingResult){
+                            self.elapsedTime = ((CACurrentMediaTime() * 1000.0) - self.timeNow) / 1000
+                            self.isPlaying = false
+                            self.showingResult = true
+                        
+                            self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: firstFrameImg, withXYArray: &XYArray, with: shotsCount)
+                            shotsCount = shotsCount + 1
+                            print("\(XYArray)")
+                            // Create a timer that fires every second and repeats indefinitely
+                            var counterSec = 0
+                            let elapsedFormatted = String(format: "%.2f", self.elapsedTime!)
+                            DispatchQueue.main.async(execute: {
+                                self.countDownLabel.text = "\(elapsedFormatted)"
+                            })
+                            let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                                // Handle timer tick here
+                                counterSec += 1
+
+
+                                if(counterSec == 5) {
+                                    timer.invalidate()
+                                    //print("Timer stopped")
+                                }
+                            }
+                            timer.fire()
+                            //                    // Schedule a task to stop the timer after 3 seconds
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                                timer.invalidate()
+                                print("Timer stopped")
+                                self.countDownLabel.text = ""
+                                self.isPlaying = false
+                                self.timerCount = 5
+                                self.showingResult = false
+                                self.preTimerHasRan = false
+                            }
+
+                        }
+                        DispatchQueue.main.async(execute: {
+                            if(self.showingResult != true) {
+
+                                self.imageView.image = capturedImage
+                            } else {
+                                self.imageView.image = self.resultImg
+                                if(!self.isPlaying){
+                                    self.isPlaying = true
+                                    self.playSound()
+
+                                }
+                            }
+
+                        })
+                    }
+
+                }
+                
+            }
+
+        } else {
+            DispatchQueue.main.async(execute: {
+                //let detect = OpenCV.calib(capturedImage, withH: self.s1)
+                self.imageView.image = capturedImage
+            })
+                    
+        }
+            
+
+
+
+	}
+}
