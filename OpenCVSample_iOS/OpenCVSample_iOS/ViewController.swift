@@ -37,6 +37,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var timer: Timer?
     
     var XYArray: [CGPoint] = []
+    var timeRecords: [Double] = []
     var roundsCount: Int32!
     var totalRounds: Int32!
     var timePerRound: Double!
@@ -50,11 +51,27 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var timerPre: Timer?
     var timerPreHasStarted: Bool! = false
     var mainTimerRan: Bool! = false
+    var numRounds: Int!
+    var shotInterval: Int!
     @objc func setPlayType(_ value: Bool) {
         self.timedShots = value
         self.playType = "TimedShots"
         print("TIMEDSHOT set")
         self.timerCount = 5
+        if let shotsPerRound = UserDefaults.standard.string(forKey: "shotsPerRound") {
+            let shotsRound = Int(shotsPerRound)
+            print("The saved value is: \(shotsPerRound)")
+            numRounds = Int(shotsPerRound)
+
+
+        }
+        if let shotsInterval = UserDefaults.standard.string(forKey: "shotsInterval") {
+            let shotsIntervalInt = Int(shotsInterval)
+            print("The saved value is: \(shotsIntervalInt)")
+            shotInterval = Int(shotsInterval)
+
+
+        }
     }
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -453,6 +470,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                             // Create a timer that fires every second and repeats indefinitely
                             var counterSec = 0
                             let elapsedFormatted = String(format: "%.2f", self.elapsedTime!)
+                            timeRecords.append(self.elapsedTime)
+                            print("\(timeRecords)")
                             DispatchQueue.main.async(execute: {
                                 self.countDownLabel.text = "\(elapsedFormatted)"
                             })
