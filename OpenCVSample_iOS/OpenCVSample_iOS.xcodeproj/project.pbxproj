@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -87,12 +87,12 @@
 				3113020223C02F1000B7C7A5 /* OpenCVSample_iOS-Bridging-Header.h */,
 				311301D423C023B700B7C7A5 /* Main.storyboard */,
 				311301D723C023B900B7C7A5 /* Assets.xcassets */,
-				311301D923C023B900B7C7A5 /* LaunchScreen.storyboard */,
 				311301DC23C023B900B7C7A5 /* Info.plist */,
 				01A99D6E29D29EBC007A3CFB /* TimedShotPopupView.storyboard */,
 				01CCC1FD29D2AD3500D84829 /* MainController.swift */,
 				01876D0329D1A4D4004FC760 /* TimedShotPopupViewController.swift */,
 				01CCC1FB29D2ACC300D84829 /* Storyboard.storyboard */,
+				311301D923C023B900B7C7A5 /* LaunchScreen.storyboard */,
 			);
 			path = OpenCVSample_iOS;
 			sourceTree = "<group>";
@@ -130,8 +130,9 @@
 		311301C323C023B700B7C7A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "Hiroki Ishiura";
 				TargetAttributes = {
 					311301CA23C023B700B7C7A5 = {
@@ -245,6 +246,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -305,6 +307,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -341,6 +344,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6SDMF2SVJH;
 				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -369,6 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6SDMF2SVJH;
 				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
