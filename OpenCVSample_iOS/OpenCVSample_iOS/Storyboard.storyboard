@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6yM-yB-wIF">
     <device id="retina6_12" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c2Z-ZZ-BtL">
-                                <rect key="frame" x="270" y="126" width="311" height="41"/>
+                                <rect key="frame" x="270" y="123" width="311" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="  Get ready for the next shot in  ">
@@ -149,7 +149,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="icI-JT-zCb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767.6056338028169" y="-814.50381679389307"/>
+            <point key="canvasLocation" x="644" y="-877"/>
+        </scene>
+        <!--Results View Controller-->
+        <scene sceneID="w8q-pE-1MJ">
+            <objects>
+                <viewController storyboardIdentifier="resultsView" id="6yM-yB-wIF" customClass="ResultsViewController" customModule="OpenCVSample_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YFu-qV-y2x">
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shot Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWh-B8-EUG">
+                                <rect key="frame" x="378" y="59" width="96" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="L0F-dz-zcI">
+                                <rect key="frame" x="40" y="80" width="772" height="279"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" systemColor="labelColor"/>
+                                <color key="sectionIndexColor" systemColor="labelColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="ajB-wk-JSA" style="IBUITableViewCellStyleDefault" id="4Hi-k4-JuF">
+                                        <rect key="frame" x="0.0" y="50" width="772" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Hi-k4-JuF" id="pdU-GH-W5a">
+                                            <rect key="frame" x="0.0" y="0.0" width="772" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ajB-wk-JSA">
+                                                    <rect key="frame" x="20" y="0.0" width="732" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6yM-yB-wIF" id="R8m-eM-8oM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BKZ-cR-xvV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="L0F-dz-zcI" secondAttribute="trailing" constant="20" id="4XN-al-gw5"/>
+                            <constraint firstItem="RWh-B8-EUG" firstAttribute="leading" secondItem="BKZ-cR-xvV" secondAttribute="leading" constant="378" id="4lV-9X-C1F"/>
+                            <constraint firstItem="L0F-dz-zcI" firstAttribute="bottom" secondItem="BKZ-cR-xvV" secondAttribute="bottom" id="IkZ-tK-1fN"/>
+                            <constraint firstItem="L0F-dz-zcI" firstAttribute="top" secondItem="RWh-B8-EUG" secondAttribute="bottom" id="KvT-iG-bfC"/>
+                            <constraint firstItem="RWh-B8-EUG" firstAttribute="top" secondItem="BKZ-cR-xvV" secondAttribute="top" id="M8e-SC-zzV"/>
+                            <constraint firstItem="BKZ-cR-xvV" firstAttribute="trailing" secondItem="RWh-B8-EUG" secondAttribute="trailing" constant="378" id="uOX-w0-VWY"/>
+                            <constraint firstItem="L0F-dz-zcI" firstAttribute="leading" secondItem="YFu-qV-y2x" secondAttribute="leadingMargin" constant="20" id="yDx-0O-oMf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="L0F-dz-zcI" id="gIg-jn-EzP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TwX-pJ-5rw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1178.8732394366198" y="145.80152671755724"/>
         </scene>
         <!--Main Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -196,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="94.366197183098592" y="-23.664122137404579"/>
+            <point key="canvasLocation" x="-14" y="-430"/>
         </scene>
         <!--Timed Shot Popup View Controller-->
         <scene sceneID="Fib-a1-NiA">
@@ -301,9 +365,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="R1e-Jh-NVK"/>
+        <segue reference="VHl-KD-b5m"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
