@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6yM-yB-wIF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Hh-jw-k8N">
     <device id="retina6_12" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,6 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="D1e-uC-O1K">
+                                <rect key="frame" x="0.0" y="-16" width="852" height="409"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="CuY-LR-6iV">
                                 <rect key="frame" x="-22" y="53" width="896" height="306"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -36,22 +40,82 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1y-in-dJq">
-                                <rect key="frame" x="721" y="276" width="94" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1y-in-dJq">
+                                <rect key="frame" x="695" y="310" width="120" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="VKu-xt-Uzx"/>
                                     <constraint firstAttribute="width" constant="94" id="viW-y5-Mcj"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" cornerStyle="dynamic">
-                                    <backgroundConfiguration key="background" strokeWidth="3">
+                                    <backgroundConfiguration key="background" cornerRadius="0.0" strokeWidth="4">
                                         <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
                                     <attributedString key="attributedTitle">
-                                        <fragment content="Start">
+                                        <fragment content="S">
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="24" name="Copperplate-Bold"/>
+                                                <font key="NSFont" size="20" name="HiraginoSans-W6"/>
+                                                <font key="NSOriginalFont" size="20" name="CorsivaHebrew"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="20" name="HiraginoSans-W6"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="T">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="20" name="HiraginoSans-W6"/>
+                                                <font key="NSOriginalFont" size="20" name="CorsivaHebrew"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="20" name="HiraginoSans-W6"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="A">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="20" name="HiraginoSans-W6"/>
+                                                <font key="NSOriginalFont" size="20" name="CorsivaHebrew"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="20" name="HiraginoSans-W6"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="R">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="20" name="HiraginoSans-W6"/>
+                                                <font key="NSOriginalFont" size="20" name="CorsivaHebrew"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="20" name="HiraginoSans-W6"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="T">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="20" name="HiraginoSans-W6"/>
                                                 <font key="NSOriginalFont" size="20" name="CorsivaHebrew"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -72,9 +136,9 @@
                                     <constraint firstAttribute="height" constant="39" id="yUr-r3-NYE"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Zoom Out" cornerStyle="dynamic">
-                                    <backgroundConfiguration key="background" strokeWidth="3">
-                                        <color key="backgroundColor" red="0.91764706370000004" green="0.46666663889999999" blue="0.45490196350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <buttonConfiguration key="configuration" style="filled" image="minus.magnifyingglass" catalog="system" cornerStyle="dynamic">
+                                    <backgroundConfiguration key="background" cornerRadius="0.0" strokeWidth="4">
+                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
@@ -89,19 +153,18 @@
                                     <constraint firstAttribute="width" constant="163" id="fTP-Jl-47m"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Zoom In" cornerStyle="dynamic">
-                                    <backgroundConfiguration key="background" strokeWidth="3">
-                                        <color key="strokeColor" red="0.94207187219999999" green="1" blue="0.92915806960000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <buttonConfiguration key="configuration" style="filled" image="plus.magnifyingglass" catalog="system" cornerStyle="dynamic">
+                                    <backgroundConfiguration key="background" cornerRadius="0.0" strokeWidth="4">
+                                        <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" red="0.91976243260000001" green="0.46552276079999999" blue="0.45918858680000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="ZoomInBtn:" destination="K2v-FV-qf0" eventType="touchUpInside" id="f9v-LL-8c8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OQz-lO-qDg">
-                                <rect key="frame" x="291" y="138" width="282" height="151"/>
+                                <rect key="frame" x="291" y="172" width="282" height="151"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="151" id="VVz-kz-4YA"/>
                                     <constraint firstAttribute="width" constant="282" id="jHW-at-Hnu"/>
@@ -149,44 +212,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="icI-JT-zCb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644" y="-877"/>
+            <point key="canvasLocation" x="924.64788732394368" y="148.85496183206106"/>
         </scene>
         <!--Results View Controller-->
         <scene sceneID="w8q-pE-1MJ">
             <objects>
                 <viewController storyboardIdentifier="resultsView" id="6yM-yB-wIF" customClass="ResultsViewController" customModule="OpenCVSample_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YFu-qV-y2x">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="YFu-qV-y2x">
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shot Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWh-B8-EUG">
-                                <rect key="frame" x="378" y="59" width="96" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="fpX-Us-nBT">
+                                <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWh-B8-EUG">
+                                <rect key="frame" x="437" y="0.0" width="107" height="20"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Shot Results">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="17" name="HiraginoSans-W4"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="L0F-dz-zcI">
-                                <rect key="frame" x="40" y="80" width="772" height="279"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="separatorColor" systemColor="labelColor"/>
-                                <color key="sectionIndexColor" systemColor="labelColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="L0F-dz-zcI">
+                                <rect key="frame" x="40" y="20" width="772" height="352"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="ajB-wk-JSA" style="IBUITableViewCellStyleDefault" id="4Hi-k4-JuF">
                                         <rect key="frame" x="0.0" y="50" width="772" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Hi-k4-JuF" id="pdU-GH-W5a">
-                                            <rect key="frame" x="0.0" y="0.0" width="772" height="43.666667938232422"/>
+                                            <rect key="frame" x="19" y="0.0" width="734" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ajB-wk-JSA">
-                                                    <rect key="frame" x="20" y="0.0" width="732" height="43.666667938232422"/>
+                                                    <rect key="frame" x="20" y="0.0" width="694" height="43.666667938232422"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -213,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TwX-pJ-5rw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178.8732394366198" y="145.80152671755724"/>
+            <point key="canvasLocation" x="924.64788732394368" y="1093.8931297709923"/>
         </scene>
         <!--Main Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -223,44 +297,137 @@
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHo-Rj-0CP">
-                                <rect key="frame" x="93" y="75" width="238" height="68"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-1o-Ztg">
+                                <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="yXL-9W-6Ry">
+                                <rect key="frame" x="0.0" y="0.0" width="852" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHo-Rj-0CP">
+                                <rect key="frame" x="38" y="187" width="311" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="311" id="TaG-nC-rmV"/>
+                                    <constraint firstAttribute="height" constant="68" id="Wa3-fc-b8D"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="LASER TRAINING"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <backgroundConfiguration key="background" cornerRadius="0.0" image="gun" strokeWidth="4">
+                                        <color key="strokeColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="LASER TRAINING">
+                                            <attributes>
+                                                <font key="NSFont" size="21" name="Arial-BoldItalicMT"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="K2v-FV-qf0" kind="presentation" id="VHl-KD-b5m"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldc-m5-DGz">
-                                <rect key="frame" x="528" y="75" width="238" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jp1-eK-2uT">
+                                <rect key="frame" x="38" y="285" width="311" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="1ct-A4-KA7"/>
+                                    <constraint firstAttribute="width" constant="311" id="gkh-xi-SN1"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="TRAINING"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jp1-eK-2uT">
-                                <rect key="frame" x="93" y="202" width="238" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="SHOT TIMER"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <backgroundConfiguration key="background" cornerRadius="0.0" image="clock" strokeWidth="4">
+                                        <color key="strokeColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="SHOT TIMER">
+                                            <attributes>
+                                                <font key="NSFont" size="21" name="Arial-BoldItalicMT"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="ihf-5I-uxH" kind="show" id="gmJ-ug-Abt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vj0-cA-QA8">
-                                <rect key="frame" x="528" y="202" width="238" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vj0-cA-QA8">
+                                <rect key="frame" x="503" y="285" width="311" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="Jjb-RB-WJd"/>
+                                    <constraint firstAttribute="width" constant="311" id="wtS-qt-naQ"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="GO TO WEBSITE"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <backgroundConfiguration key="background" cornerRadius="0.0" image="web" strokeWidth="4">
+                                        <color key="strokeColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="GO TO WEBSITE">
+                                            <attributes>
+                                                <font key="NSFont" size="21" name="Arial-BoldItalicMT"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcY-SM-ikR">
+                                <rect key="frame" x="764" y="30" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1j2-q4-IUI"/>
+                                    <constraint firstAttribute="width" constant="50" id="hBu-ah-Lwv"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="">
+                                    <backgroundConfiguration key="background" image="gearshape" catalog="system"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldc-m5-DGz">
+                                <rect key="frame" x="503" y="187" width="311" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="AQ7-1z-fx5"/>
+                                    <constraint firstAttribute="width" constant="311" id="F3B-rW-ugE"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <backgroundConfiguration key="background" cornerRadius="0.0" image="target" strokeWidth="4">
+                                        <color key="strokeColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="TRAINING">
+                                            <attributes>
+                                                <font key="NSFont" size="21" name="Arial-BoldItalicMT"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vj0-cA-QA8" secondAttribute="trailing" constant="38" id="6IX-VS-u3B"/>
+                            <constraint firstItem="HHo-Rj-0CP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="OQz-64-W4o"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ldc-m5-DGz" secondAttribute="trailing" constant="38" id="QGX-lF-hea"/>
+                            <constraint firstItem="HHo-Rj-0CP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="hn8-S6-dBn"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vj0-cA-QA8" secondAttribute="bottom" constant="40" id="ht4-74-Xym"/>
+                            <constraint firstItem="vj0-cA-QA8" firstAttribute="top" secondItem="ldc-m5-DGz" secondAttribute="bottom" constant="30" id="ie0-ay-3Vj"/>
+                            <constraint firstItem="jp1-eK-2uT" firstAttribute="top" secondItem="HHo-Rj-0CP" secondAttribute="bottom" constant="30" id="k7r-pA-8Aq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jp1-eK-2uT" secondAttribute="bottom" constant="40" id="oeX-eB-8r5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wcY-SM-ikR" secondAttribute="trailing" constant="38" id="qHk-xz-MSq"/>
+                            <constraint firstItem="jp1-eK-2uT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="rAW-Yp-Lhq"/>
+                            <constraint firstItem="wcY-SM-ikR" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="z0R-4c-19r"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="WgD-YO-bXC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-14" y="-430"/>
+            <point key="canvasLocation" x="144.36619718309859" y="-431.29770992366412"/>
         </scene>
         <!--Timed Shot Popup View Controller-->
         <scene sceneID="Fib-a1-NiA">
@@ -270,87 +437,111 @@
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shot Interval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28C-s3-w3X">
-                                <rect key="frame" x="146" y="210" width="96" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="loq-w7-RoY">
-                                <rect key="frame" x="146" y="158" width="583" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="twf-hG-eju"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="numberOfRoundsSlide:" destination="ihf-5I-uxH" eventType="valueChanged" id="Bv0-J0-Ka7"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0B-L0-oWR">
-                                <rect key="frame" x="146" y="129" width="143" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Rrw-Wp-ej3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p25-WA-5jk">
-                                <rect key="frame" x="447" y="312.66666666666669" width="212" height="34.666666666666686"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="212" id="UwG-yD-8ns"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="RESET SETTINGS"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Szd-tv-jTJ">
-                                <rect key="frame" x="203" y="309" width="210" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="210" id="AQc-MT-r8j"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="UPDATE SETTINGS"/>
-                                <connections>
-                                    <segue destination="K2v-FV-qf0" kind="show" identifier="timedSeqSegue" destinationCreationSelector="setPlayType" id="R1e-Jh-NVK"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shot Timer Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kad-2x-tDw">
-                                <rect key="frame" x="146" y="83" width="151" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="1KT-Dk-SGj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="5" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="41C-G2-aWC">
-                                <rect key="frame" x="146" y="239" width="583" height="31"/>
-                                <connections>
-                                    <action selector="shotIntervalSlide:" destination="ihf-5I-uxH" eventType="valueChanged" id="MzZ-UD-mgb"/>
-                                </connections>
-                            </slider>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="2YM-fx-2yG">
+                                <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="gys-qP-y5D">
+                                <rect key="frame" x="0.0" y="0.0" width="852" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSt-c9-yY9">
+                                <rect key="frame" x="59" y="132" width="734" height="246"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="5" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="41C-G2-aWC">
+                                        <rect key="frame" x="36" y="154" width="634" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" systemColor="systemPinkColor"/>
+                                        <connections>
+                                            <action selector="shotIntervalSlide:" destination="ihf-5I-uxH" eventType="valueChanged" id="MzZ-UD-mgb"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shot Interval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28C-s3-w3X">
+                                        <rect key="frame" x="43" y="125" width="105" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="loq-w7-RoY">
+                                        <rect key="frame" x="36" y="87" width="634" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" systemColor="systemPinkColor"/>
+                                        <connections>
+                                            <action selector="numberOfRoundsSlide:" destination="ihf-5I-uxH" eventType="valueChanged" id="Bv0-J0-Ka7"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0B-L0-oWR">
+                                        <rect key="frame" x="38" y="58" width="170" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kad-2x-tDw">
+                                        <rect key="frame" x="38" y="16" width="206" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Shot Timer Settings">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="20" name="HiraginoSans-W4"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Szd-tv-jTJ">
+                                        <rect key="frame" x="38" y="199" width="228" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled">
+                                            <backgroundConfiguration key="background" cornerRadius="0.0" strokeWidth="4">
+                                                <color key="strokeColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </backgroundConfiguration>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="UPDATE SETTINGS">
+                                                    <attributes>
+                                                        <font key="NSFont" size="15" name="HiraginoSans-W4"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="K2v-FV-qf0" kind="show" identifier="timedSeqSegue" destinationCreationSelector="setPlayType" id="R1e-Jh-NVK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p25-WA-5jk">
+                                        <rect key="frame" x="440" y="196" width="228" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled">
+                                            <backgroundConfiguration key="background" cornerRadius="0.0" strokeWidth="4">
+                                                <color key="strokeColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </backgroundConfiguration>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="RESET SETTINGS">
+                                                    <attributes>
+                                                        <font key="NSFont" size="15" name="HiraginoSans-W4"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hVw-XD-F6H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="p25-WA-5jk" firstAttribute="baseline" secondItem="Szd-tv-jTJ" secondAttribute="firstBaseline" id="0Xm-fx-YE5"/>
-                            <constraint firstItem="41C-G2-aWC" firstAttribute="top" secondItem="28C-s3-w3X" secondAttribute="bottom" constant="8" symbolic="YES" id="72x-Tz-GrR"/>
-                            <constraint firstItem="hVw-XD-F6H" firstAttribute="trailing" secondItem="loq-w7-RoY" secondAttribute="trailing" constant="125" id="8j2-EE-O2r"/>
-                            <constraint firstItem="loq-w7-RoY" firstAttribute="top" secondItem="l0B-L0-oWR" secondAttribute="bottom" constant="8" symbolic="YES" id="9g3-pA-GtG"/>
-                            <constraint firstItem="p25-WA-5jk" firstAttribute="leading" secondItem="Szd-tv-jTJ" secondAttribute="trailing" constant="34" id="Ayd-nb-NPW"/>
-                            <constraint firstItem="p25-WA-5jk" firstAttribute="centerY" secondItem="Szd-tv-jTJ" secondAttribute="centerY" id="H5G-dq-sxF"/>
-                            <constraint firstItem="l0B-L0-oWR" firstAttribute="leading" secondItem="28C-s3-w3X" secondAttribute="leading" id="JMG-yI-hmX"/>
-                            <constraint firstItem="hVw-XD-F6H" firstAttribute="bottom" secondItem="p25-WA-5jk" secondAttribute="bottom" constant="11.666666666666686" id="Jkt-fE-unO"/>
-                            <constraint firstItem="loq-w7-RoY" firstAttribute="trailing" secondItem="41C-G2-aWC" secondAttribute="trailing" id="Xgp-vn-Qrd"/>
-                            <constraint firstItem="Kad-2x-tDw" firstAttribute="leading" secondItem="l0B-L0-oWR" secondAttribute="leading" id="dfF-Bv-3Sc"/>
-                            <constraint firstItem="loq-w7-RoY" firstAttribute="leading" secondItem="41C-G2-aWC" secondAttribute="leading" id="dqi-mB-C8A"/>
-                            <constraint firstItem="Szd-tv-jTJ" firstAttribute="top" secondItem="41C-G2-aWC" secondAttribute="bottom" constant="40" id="fOS-6N-68H"/>
-                            <constraint firstItem="Szd-tv-jTJ" firstAttribute="baseline" secondItem="p25-WA-5jk" secondAttribute="baseline" id="grl-rB-49v"/>
-                            <constraint firstItem="l0B-L0-oWR" firstAttribute="top" secondItem="Kad-2x-tDw" secondAttribute="bottom" constant="25" id="h0V-CO-R6z"/>
-                            <constraint firstItem="Kad-2x-tDw" firstAttribute="leading" secondItem="hVw-XD-F6H" secondAttribute="leading" constant="146" id="hfM-ep-IqE"/>
-                            <constraint firstItem="28C-s3-w3X" firstAttribute="top" secondItem="loq-w7-RoY" secondAttribute="bottom" constant="23" id="pak-pb-fsu"/>
-                            <constraint firstItem="loq-w7-RoY" firstAttribute="leading" secondItem="hVw-XD-F6H" secondAttribute="leading" constant="148" id="r4t-ub-th1"/>
-                            <constraint firstItem="Kad-2x-tDw" firstAttribute="top" secondItem="hVw-XD-F6H" secondAttribute="top" constant="24" id="u1b-pZ-Agd"/>
-                            <constraint firstItem="hVw-XD-F6H" firstAttribute="trailing" secondItem="p25-WA-5jk" secondAttribute="trailing" constant="193" id="xyd-3P-aVY"/>
+                            <constraint firstItem="tSt-c9-yY9" firstAttribute="leading" secondItem="hVw-XD-F6H" secondAttribute="leading" constant="59" id="1aQ-zQ-89W"/>
+                            <constraint firstItem="hVw-XD-F6H" firstAttribute="bottom" secondItem="tSt-c9-yY9" secondAttribute="bottom" constant="15" id="Mu2-GV-SPk"/>
+                            <constraint firstItem="tSt-c9-yY9" firstAttribute="top" secondItem="hVw-XD-F6H" secondAttribute="top" constant="132" id="NYX-rk-9z1"/>
+                            <constraint firstItem="hVw-XD-F6H" firstAttribute="trailing" secondItem="tSt-c9-yY9" secondAttribute="trailing" constant="59" id="XCe-6o-xLq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RmX-Y9-n6e"/>
@@ -361,21 +552,323 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36d-86-15v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="146" y="811"/>
+            <point key="canvasLocation" x="144.36619718309859" y="809.92366412213732"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yzO-aw-jUj">
+            <objects>
+                <viewController id="3Hh-jw-k8N" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="ul2-k3-xqO">
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="jsu-Wk-qwn">
+                                <rect key="frame" x="0.0" y="0.0" width="852" height="408"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="header" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gj-0M-lYl">
+                                <rect key="frame" x="0.0" y="0.0" width="852" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0HZ-v2-Plt">
+                                <rect key="frame" x="59" y="132" width="377" height="240"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LG7-b3-jjT">
+                                        <rect key="frame" x="4" y="0.0" width="377" height="71"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="377" id="D5I-1B-a8W"/>
+                                            <constraint firstAttribute="width" constant="377" id="O5D-yw-Wdo"/>
+                                            <constraint firstAttribute="height" constant="71" id="d8G-Fx-g1T"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemPinkColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled">
+                                            <backgroundConfiguration key="background" cornerRadius="0.0" strokeWidth="4">
+                                                <color key="strokeColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </backgroundConfiguration>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="W A R N I N">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HiraginoSans-W6"/>
+                                                        <font key="NSOriginalFont" size="24" name="HiraginoSansCNS-W3"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HiraginoSans-W6"/>
+                                                        <font key="NSOriginalFont" size="24" name="HiraginoSansCNS-W6"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="G !">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HiraginoSans-W6"/>
+                                                        <font key="NSOriginalFont" size="24" name="HiraginoSansCNS-W3"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bd7-X1-mPB">
+                                        <rect key="frame" x="30" y="183" width="283" height="52"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="283" id="FbV-qP-Rka"/>
+                                            <constraint firstAttribute="height" constant="52" id="GsJ-AN-Iqd"/>
+                                            <constraint firstAttribute="width" constant="283" id="UuC-km-vyF"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled">
+                                            <backgroundConfiguration key="background" cornerRadius="0.0" strokeWidth="4">
+                                                <color key="strokeColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </backgroundConfiguration>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="C">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HiraginoSans-W6"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="O">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HiraginoSans-W6"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="N">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HiraginoSans-W6"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="T">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HiraginoSans-W6"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="I">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HiraginoSans-W6"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="N">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HiraginoSans-W6"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="U">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HiraginoSans-W6"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="E">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HiraginoSans-W6"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="Y6W-OH-hqX" kind="show" id="TuK-A2-1gT"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqf-o8-7W7">
+                                        <rect key="frame" x="0.0" y="95" width="377" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="d0h-Hb-hJy"/>
+                                            <constraint firstAttribute="width" constant="377" id="irL-h0-bgj"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="By Clicking CONTINUE, you agree you have completed all 3 steps.">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="20" name="HiraginoSans-W4"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="LG7-b3-jjT" secondAttribute="trailing" constant="4" id="3nt-SY-xLC"/>
+                                    <constraint firstItem="Oqf-o8-7W7" firstAttribute="top" secondItem="LG7-b3-jjT" secondAttribute="bottom" constant="24" id="8ep-dC-vxJ"/>
+                                    <constraint firstItem="Bd7-X1-mPB" firstAttribute="leading" secondItem="0HZ-v2-Plt" secondAttribute="leading" constant="30" id="CgI-mZ-KTk"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bd7-X1-mPB" secondAttribute="bottom" constant="5" id="HB9-L2-lxK"/>
+                                    <constraint firstAttribute="trailing" secondItem="LG7-b3-jjT" secondAttribute="trailing" constant="20" id="av8-9F-bvO"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bd7-X1-mPB" secondAttribute="trailing" constant="30" id="bY7-rj-axt"/>
+                                    <constraint firstAttribute="trailing" secondItem="Oqf-o8-7W7" secondAttribute="trailing" id="cMz-Kg-bdM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bd7-X1-mPB" secondAttribute="trailing" constant="30" id="lpV-i2-wcZ"/>
+                                    <constraint firstItem="Oqf-o8-7W7" firstAttribute="leading" secondItem="0HZ-v2-Plt" secondAttribute="leading" id="nnS-cF-vIE"/>
+                                    <constraint firstItem="LG7-b3-jjT" firstAttribute="leading" secondItem="0HZ-v2-Plt" secondAttribute="leading" constant="4" id="rgL-oH-aH9"/>
+                                    <constraint firstItem="Bd7-X1-mPB" firstAttribute="top" secondItem="Oqf-o8-7W7" secondAttribute="bottom" constant="37" id="rxs-bs-gGl"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-Ye-Dds">
+                                <rect key="frame" x="456" y="132" width="337" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lka-vl-xeT">
+                                        <rect key="frame" x="0.0" y="0.0" width="337" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="337" id="TtX-YH-INO"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="1. Make sure all ammunation is removed from both magazine and firearm chamber.">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="20" name="HiraginoSans-W4"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" headIndent="21" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tpc-Jk-sdH">
+                                        <rect key="frame" x="0.0" y="95" width="321" height="46.666666666666657"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="321" id="E2r-1k-EK3"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="2. Make sure practice area is free of all ammo and other firearms.">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="20" name="HiraginoSans-W4"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" headIndent="21" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWL-vP-qtS">
+                                        <rect key="frame" x="0.0" y="166.66666666666669" width="337" height="46.666666666666657"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="3. Do not aim the firearm or laser at another person or animal">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="20" name="HiraginoSans-W4"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" headIndent="21" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lka-vl-xeT" firstAttribute="top" secondItem="Obb-Ye-Dds" secondAttribute="top" id="0M8-Qb-wkW"/>
+                                    <constraint firstItem="hWL-vP-qtS" firstAttribute="leading" secondItem="Obb-Ye-Dds" secondAttribute="leading" id="1Fa-Ru-rmm"/>
+                                    <constraint firstAttribute="width" constant="337" id="2Vj-uU-NWd"/>
+                                    <constraint firstAttribute="trailing" secondItem="hWL-vP-qtS" secondAttribute="trailing" id="IJa-oA-5bq"/>
+                                    <constraint firstAttribute="trailing" secondItem="lka-vl-xeT" secondAttribute="trailing" id="IMK-71-UDz"/>
+                                    <constraint firstItem="lka-vl-xeT" firstAttribute="leading" secondItem="Obb-Ye-Dds" secondAttribute="leading" id="MZN-Dh-wAV"/>
+                                    <constraint firstItem="Tpc-Jk-sdH" firstAttribute="leading" secondItem="Obb-Ye-Dds" secondAttribute="leading" id="RKs-0e-XNU"/>
+                                    <constraint firstItem="hWL-vP-qtS" firstAttribute="top" secondItem="Tpc-Jk-sdH" secondAttribute="bottom" constant="25" id="XqR-e7-mVq"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tpc-Jk-sdH" secondAttribute="trailing" id="ie9-NQ-2bV"/>
+                                    <constraint firstAttribute="height" constant="240" id="sdE-jX-oPQ"/>
+                                    <constraint firstItem="Tpc-Jk-sdH" firstAttribute="top" secondItem="lka-vl-xeT" secondAttribute="bottom" constant="25" id="yfc-ra-RlW"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duc-me-izB">
+                                <rect key="frame" x="705" y="30" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8OU-hS-vMJ"/>
+                                    <constraint firstAttribute="width" constant="50" id="oZv-BL-7Jb"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="">
+                                    <backgroundConfiguration key="background" image="gearshape" catalog="system"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4KJ-FK-AnV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Obb-Ye-Dds" firstAttribute="leading" secondItem="0HZ-v2-Plt" secondAttribute="trailing" constant="20" id="8Pm-cX-wNg"/>
+                            <constraint firstItem="duc-me-izB" firstAttribute="top" secondItem="4KJ-FK-AnV" secondAttribute="top" constant="30" id="8YK-Yo-gpr"/>
+                            <constraint firstItem="Obb-Ye-Dds" firstAttribute="leading" secondItem="0HZ-v2-Plt" secondAttribute="trailing" constant="20" id="BbZ-tS-cJp"/>
+                            <constraint firstItem="4KJ-FK-AnV" firstAttribute="trailing" secondItem="Obb-Ye-Dds" secondAttribute="trailing" id="F8h-D1-EoF"/>
+                            <constraint firstItem="Obb-Ye-Dds" firstAttribute="leading" secondItem="0HZ-v2-Plt" secondAttribute="trailing" constant="20" id="FeJ-sx-wJR"/>
+                            <constraint firstItem="0HZ-v2-Plt" firstAttribute="bottom" secondItem="4KJ-FK-AnV" secondAttribute="bottom" id="Fi6-Zx-Rqk"/>
+                            <constraint firstItem="0HZ-v2-Plt" firstAttribute="top" secondItem="4KJ-FK-AnV" secondAttribute="top" constant="132" id="ZBU-lw-73s"/>
+                            <constraint firstItem="Obb-Ye-Dds" firstAttribute="top" secondItem="4KJ-FK-AnV" secondAttribute="top" constant="132" id="evO-Ie-yyG"/>
+                            <constraint firstItem="Obb-Ye-Dds" firstAttribute="bottom" secondItem="4KJ-FK-AnV" secondAttribute="bottom" id="hYo-Xa-0Dm"/>
+                            <constraint firstItem="Obb-Ye-Dds" firstAttribute="trailing" secondItem="4KJ-FK-AnV" secondAttribute="trailing" id="j6t-mh-1KJ"/>
+                            <constraint firstItem="0HZ-v2-Plt" firstAttribute="leading" secondItem="4KJ-FK-AnV" secondAttribute="leading" id="rIY-sy-tX8"/>
+                            <constraint firstItem="4KJ-FK-AnV" firstAttribute="trailing" secondItem="duc-me-izB" secondAttribute="trailing" constant="38" id="xO8-ev-NzG"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SSr-mQ-h4t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-639.43661971830988" y="-431.29770992366412"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VHl-KD-b5m"/>
+        <segue reference="R1e-Jh-NVK"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="background" width="1920" height="1080"/>
+        <image name="clock" width="952" height="267"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="gun" width="952" height="267"/>
+        <image name="header" width="1920" height="445"/>
+        <image name="minus.magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="plus.magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="target" width="952" height="267"/>
+        <image name="web" width="952" height="267"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
