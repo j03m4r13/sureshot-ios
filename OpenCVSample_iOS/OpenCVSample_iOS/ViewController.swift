@@ -207,13 +207,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.timerCount = shotInterval
         self.timedShotCount = 0
         
-        if(startBtn.currentAttributedTitle?.string == "Start"){
+        if(startBtn.currentAttributedTitle?.string == "START"){
             
             let copperFont = UIFont(name: "Copperplate", size: 24)!
             let boldCopperFontDescriptor = copperFont.fontDescriptor.withSymbolicTraits(.traitBold)!
             let boldCopperFont = UIFont(descriptor: boldCopperFontDescriptor, size: 24)
 
-            let attributedString = NSAttributedString(string: "Stop", attributes: [.font: boldCopperFont])
+            let attributedString = NSAttributedString(string: "STOP", attributes: [.font: boldCopperFont])
             self.startBtn.setAttributedTitle(attributedString, for: .normal)
             self.showingResult = false
             if(self.playType == "10Shots"){
@@ -301,7 +301,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
 
             
-        }else if(startBtn.currentAttributedTitle?.string == "Stop"){
+        }else if(startBtn.currentAttributedTitle?.string == "STOP"){
             if(self.timer != nil) {
                 self.timer?.invalidate()
             }
@@ -319,7 +319,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             let boldCopperFontDescriptor = copperFont.fontDescriptor.withSymbolicTraits(.traitBold)!
             let boldCopperFont = UIFont(descriptor: boldCopperFontDescriptor, size: 24)
 
-            let attributedString = NSAttributedString(string: "Start", attributes: [.font: boldCopperFont])
+            let attributedString = NSAttributedString(string: "START", attributes: [.font: boldCopperFont])
             self.startBtn.setAttributedTitle(attributedString, for: .normal)
             self.hasStarted = false
             self.showingResult = false
