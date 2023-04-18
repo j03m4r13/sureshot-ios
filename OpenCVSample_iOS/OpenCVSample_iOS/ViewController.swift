@@ -137,7 +137,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 		}
 		do {
 			try self.device.lockForConfiguration()
-			self.device.activeVideoMinFrameDuration = CMTimeMake(value: 1, timescale: 30) // 20 fps'
+			self.device.activeVideoMinFrameDuration = CMTimeMake(value: 1, timescale: 60) // 20 fps'
             self.device.videoZoomFactor = self.zoomLevel
             self.device.exposureMode = .locked
 			self.device.unlockForConfiguration()
@@ -196,9 +196,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         show(secondVC, sender: self)
     }
     
+    
+    
     @IBAction func startShoot(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Storyboard", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "resultsView") as! ResultsViewController
+        destinationVC.timeRecordsData = timeRecords
+        present(destinationVC, animated: true, completion: nil)
+
+
+        return;
         
-       
         self.playType = "10Shots"
         self.playType = "TimedShots"
         var countDown = 3

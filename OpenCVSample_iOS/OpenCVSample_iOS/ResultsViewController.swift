@@ -12,8 +12,12 @@ import Foundation
 class ResultsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var dataSourceArray = ["Item 1", "Item 2", "Item 3"]
+    var timeRecordsData: [Double]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let parameterValue = timeRecordsData {
+                print("Parameter value is: \(parameterValue)")
+            }
         // Assuming you have an array of strings that represents the data source for the table view
     }
    
