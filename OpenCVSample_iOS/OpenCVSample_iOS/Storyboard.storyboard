@@ -941,20 +941,107 @@
                                     <backgroundConfiguration key="background" image="chevron.compact.left" catalog="system"/>
                                 </buttonConfiguration>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wt4-8X-PYi">
+                                <rect key="frame" x="20" y="136" width="59" height="24"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Sound">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="20" name="HiraginoSans-W4"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceo-zW-Kwb">
+                                <rect key="frame" x="20" y="175" width="121" height="20"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Shooting sound">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="17" name="HiraginoSans-W4"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JUR-fn-kdF">
+                                <rect key="frame" x="20" y="203" width="812" height="83"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8V-b1-Yrm">
+                                <rect key="frame" x="20" y="306" width="228" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="228" id="R5e-HZ-vmc"/>
+                                    <constraint firstAttribute="height" constant="42" id="nA2-Pp-v94"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <backgroundConfiguration key="background" cornerRadius="0.0" strokeWidth="4">
+                                        <color key="strokeColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="UPDATE SETTINGS">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="15" name="HiraginoSans-W4"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYo-Jb-bSL">
+                                <rect key="frame" x="604" y="306" width="228" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="WAe-EV-j9F"/>
+                                    <constraint firstAttribute="width" constant="228" id="XJi-3M-HRf"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <backgroundConfiguration key="background" cornerRadius="0.0" strokeWidth="4">
+                                        <color key="strokeColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="RESET SETTINGS">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HiraginoSans-W4"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eoj-Tr-AeQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Xlm-Q0-wCx" secondAttribute="trailing" id="5pw-nY-aKW"/>
                             <constraint firstItem="P7q-SL-mwI" firstAttribute="leading" secondItem="aIr-qK-1Sk" secondAttribute="leading" id="DIb-L2-yID"/>
+                            <constraint firstItem="eoj-Tr-AeQ" firstAttribute="trailing" secondItem="JUR-fn-kdF" secondAttribute="trailing" constant="20" id="DSB-Ie-kaU"/>
+                            <constraint firstItem="Wt4-8X-PYi" firstAttribute="top" secondItem="Xlm-Q0-wCx" secondAttribute="bottom" constant="8" id="HBe-h9-0xx"/>
+                            <constraint firstItem="A8V-b1-Yrm" firstAttribute="top" secondItem="JUR-fn-kdF" secondAttribute="bottom" constant="20" id="Ifm-DN-oFJ"/>
                             <constraint firstItem="Xlm-Q0-wCx" firstAttribute="leading" secondItem="aIr-qK-1Sk" secondAttribute="leading" id="K7L-zU-Zsk"/>
+                            <constraint firstItem="Wt4-8X-PYi" firstAttribute="leading" secondItem="eoj-Tr-AeQ" secondAttribute="leading" constant="20" id="MwO-h3-gj7"/>
                             <constraint firstItem="Qbp-8x-GFh" firstAttribute="top" secondItem="aIr-qK-1Sk" secondAttribute="top" id="NWX-Se-5sG"/>
+                            <constraint firstItem="eoj-Tr-AeQ" firstAttribute="trailing" secondItem="rYo-Jb-bSL" secondAttribute="trailing" constant="20" id="SIr-h8-XOk"/>
+                            <constraint firstItem="eoj-Tr-AeQ" firstAttribute="bottom" secondItem="A8V-b1-Yrm" secondAttribute="bottom" constant="25" id="T2L-xW-WTo"/>
+                            <constraint firstItem="rYo-Jb-bSL" firstAttribute="top" secondItem="JUR-fn-kdF" secondAttribute="bottom" constant="20" id="UNr-0C-jRa"/>
                             <constraint firstItem="Qbp-8x-GFh" firstAttribute="leading" secondItem="aIr-qK-1Sk" secondAttribute="leading" id="Usq-yy-sHh"/>
                             <constraint firstAttribute="bottom" secondItem="Xlm-Q0-wCx" secondAttribute="bottom" constant="265" id="V8E-LU-V29"/>
+                            <constraint firstItem="JUR-fn-kdF" firstAttribute="leading" secondItem="eoj-Tr-AeQ" secondAttribute="leading" constant="20" id="YBC-Gj-LeB"/>
+                            <constraint firstItem="eoj-Tr-AeQ" firstAttribute="bottom" secondItem="JUR-fn-kdF" secondAttribute="bottom" constant="107" id="dDi-66-WbX"/>
                             <constraint firstAttribute="trailing" secondItem="Qbp-8x-GFh" secondAttribute="trailing" id="eRf-9q-BNl"/>
+                            <constraint firstItem="ceo-zW-Kwb" firstAttribute="leading" secondItem="eoj-Tr-AeQ" secondAttribute="leading" constant="20" id="hZm-3A-Iul"/>
                             <constraint firstAttribute="bottom" secondItem="Qbp-8x-GFh" secondAttribute="bottom" id="hsG-mO-qdV"/>
                             <constraint firstItem="P7q-SL-mwI" firstAttribute="top" secondItem="aIr-qK-1Sk" secondAttribute="top" constant="30" id="pnF-Hn-csC"/>
+                            <constraint firstItem="JUR-fn-kdF" firstAttribute="top" secondItem="ceo-zW-Kwb" secondAttribute="bottom" constant="8" id="q8D-q2-fvM"/>
                             <constraint firstItem="Xlm-Q0-wCx" firstAttribute="top" secondItem="aIr-qK-1Sk" secondAttribute="top" id="u1p-Ld-geT"/>
+                            <constraint firstItem="ceo-zW-Kwb" firstAttribute="top" secondItem="Xlm-Q0-wCx" secondAttribute="bottom" constant="47" id="u94-qd-IC6"/>
+                            <constraint firstItem="A8V-b1-Yrm" firstAttribute="leading" secondItem="eoj-Tr-AeQ" secondAttribute="leading" constant="20" id="xMj-tn-V6v"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RzZ-SG-Ms1"/>
@@ -966,7 +1053,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qbw-7j-aHH"/>
-        <segue reference="6VO-Uu-pTY"/>
+        <segue reference="9Tr-nK-v3a"/>
         <segue reference="R1e-Jh-NVK"/>
     </inferredMetricsTieBreakers>
     <resources>
