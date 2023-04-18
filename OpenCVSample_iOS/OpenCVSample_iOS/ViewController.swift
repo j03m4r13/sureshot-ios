@@ -37,7 +37,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var timer: Timer?
     
     var XYArray: [CGPoint] = []
-    var timeRecords: [Double] = []
+    var timeRecords: [Double] = [1.23, 5,2, 1.2]
     var roundsCount: Int32!
     var totalRounds: Int32!
     var timePerRound: Double!
@@ -137,7 +137,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 		}
 		do {
 			try self.device.lockForConfiguration()
-			self.device.activeVideoMinFrameDuration = CMTimeMake(value: 1, timescale:60) // 20 fps'
+			self.device.activeVideoMinFrameDuration = CMTimeMake(value: 1, timescale: 30) // 20 fps'
             self.device.videoZoomFactor = self.zoomLevel
             self.device.exposureMode = .locked
 			self.device.unlockForConfiguration()
@@ -185,7 +185,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print("could not configure a device")
             return
         }
-
     }
     
     
