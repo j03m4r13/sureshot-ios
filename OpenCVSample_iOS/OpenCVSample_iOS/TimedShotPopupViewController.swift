@@ -54,6 +54,7 @@ class TimedShotPopupViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "timedSeqSegue" {
+            print("TIMED SEGUE FIRED")
             if let destinationVC = segue.destination as? ViewController {
                 let shotsPerRound = Int(numRounds.value)
                 
@@ -64,6 +65,7 @@ class TimedShotPopupViewController: UIViewController {
                 shotInterval.value = Float(shotsInterval)
 
                 destinationVC.timedShots = true
+                destinationVC.playType = "TimedShots"
                 segue.destination.performSelector(onMainThread: #selector(destinationVC.setPlayType(_:)), with: true, waitUntilDone: false)
             }
         }

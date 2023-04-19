@@ -32,19 +32,19 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var showingResult: Bool!
     var isPlaying: Bool!
     var zoomLevel: CGFloat!
-    var playType: String!
+    var playType = ""
     var shotsCount: Int32!
     var timer: Timer?
     
     var XYArray: [CGPoint] = []
-    var timeRecords: [Double] = [1.23, 5,2, 1.2]
+    var timeRecords: [Double] = []
     var roundsCount: Int32!
     var totalRounds: Int32!
     var timePerRound: Double!
     var elapsedTime: Double!
     var timeNow: Double!
     var timedCountStarted: Bool!
-    var timedShots: Bool! = false
+    var timedShots: Bool?
     var preTimerHasRan: Bool! = false
     var timerHasRan: Bool! = false
     var timerCount: Int!
@@ -59,9 +59,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var timedShotPauseTimer: Timer?
     
     @objc func setPlayType(_ value: Bool) {
+
         self.timedShots = value
-        self.playType = "TimedShots"
-        print("TIMEDSHOT set")
+
+        print("Play Type value \(value)")
         self.timedShotCount = 0
         self.timerCount = 5
         if let shotsPerRound = UserDefaults.standard.string(forKey: "shotsPerRound") {
@@ -92,7 +93,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         preTimerHasRan = false
         timedCountStarted = false
         timerCount = 5
-        playType = ""
+        //playType = ""
         timerPre = nil
         self.countDownLabel.text = ""
 		// Prepare a video capturing session.
@@ -199,16 +200,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     
     @IBAction func startShoot(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Storyboard", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: "resultsView") as! ResultsViewController
-        destinationVC.timeRecordsData = timeRecords
-        present(destinationVC, animated: true, completion: nil)
-
-
-        return;
-        
-        self.playType = "10Shots"
-        self.playType = "TimedShots"
+//        let storyboard = UIStoryboard(name: "Storyboard", bundle: nil)
+//        let destinationVC = storyboard.instantiateViewController(withIdentifier: "resultsView") as! ResultsViewController
+//        destinationVC.timeRecordsData = timeRecords
+//        present(destinationVC, animated: true, completion: nil)
+//
+//
+//        return;
+//
+//        self.playType = "10Shots"
+//        self.playType = "TimedShots"
+        print("PLAYTYPE: \(self.playType ?? "")")
         var countDown = 3
         self.shotsCount = 0
         self.timerCount = shotInterval
@@ -384,9 +386,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     func showResults(){
-        let newViewController = UIStoryboard(name: "Storyboard", bundle: nil).instantiateViewController(withIdentifier: "resultsView") as! ResultsViewController
-        self.present(newViewController, animated: true, completion: nil)
+            let storyboard = UIStoryboard(name: "Storyboard", bundle: nil)
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "resultsView") as! ResultsViewController
+            destinationVC.timeRecordsData = timeRecords
+            present(destinationVC, animated: true, completion: nil)
     }
+    
 	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 		// Convert a captured image buffer to UIImage.
 		guard let buffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
@@ -470,7 +475,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                             let boldCopperFontDescriptor = copperFont.fontDescriptor.withSymbolicTraits(.traitBold)!
                             let boldCopperFont = UIFont(descriptor: boldCopperFontDescriptor, size: 24)
 
-                            let attributedString = NSAttributedString(string: "Start", attributes: [.font: boldCopperFont])
+                            let attributedString = NSAttributedString(string: "START", attributes: [.font: boldCopperFont])
                             self.startBtn.setAttributedTitle(attributedString, for: .normal)
                             self.hasStarted = false
                             self.showingResult = false
