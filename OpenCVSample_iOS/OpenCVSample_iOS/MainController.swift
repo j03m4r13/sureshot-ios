@@ -25,11 +25,29 @@ class MainController: UIViewController {
                 destinationVC.playType = "10Shots"
                 segue.destination.performSelector(onMainThread: #selector(destinationVC.setPlayType(_:)), with: true, waitUntilDone: false)
             }
+        } else if segue.identifier == "fromMainMenuSegue" {
+            if let destinationVC = segue.destination as? PreferenceViewController {
+
+                print("10 shots segue fired")
+                destinationVC.previousScreen = "MainMenu"
+   
+
+            }
         }
     }
     
     @IBAction func performSegue(_ sender: Any) {
        performSegue(withIdentifier: "10ShotsSegue", sender: self)
+//        print("10 SHOTS BUTTON")
+//        let storyboard = UIStoryboard(name: "Storyboard", bundle: nil)
+//        let destinationVC = storyboard.instantiateViewController(withIdentifier: "viewController") as! ViewController
+//        destinationVC.timedShots = true
+//        destinationVC.playType = "10Shots"
+//        present(destinationVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func showPreference(_ sender: Any) {
+       performSegue(withIdentifier: "fromMainMenuSegue", sender: self)
 //        print("10 SHOTS BUTTON")
 //        let storyboard = UIStoryboard(name: "Storyboard", bundle: nil)
 //        let destinationVC = storyboard.instantiateViewController(withIdentifier: "viewController") as! ViewController

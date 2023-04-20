@@ -82,6 +82,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        UIApplication.shared.isIdleTimerDisabled = true
         s1 = 1.0
         zoomLevel = 1
         shotsCount = 0
@@ -149,6 +150,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
 		self.session.startRunning()
 	}
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+        
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let currentValue = sender.value
         s1 = currentValue
@@ -334,6 +342,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             self.showingResult = false
             self.firstFrame = true
             self.countDownLabel.text = ""
+            self.readyText.text = ""
 
         }
     }
@@ -435,7 +444,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                         }
                         timer.fire()
     //                    // Schedule a task to stop the timer after 3 seconds
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             timer.invalidate()
                             print("Timer stopped")
                             self.isPlaying = false
@@ -601,4 +610,20 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
 
 	}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromViewControllerSegue" {
+            if let destinationVC = segue.destination as? PreferenceViewController {
+
+                destinationVC.previousScreen = "ViewController"
+                destinationVC.playType = self.playType
+                destinationVC.timedShots = self.timedShots ?? false
+   
+
+            }
+        }
+    }
+    @IBAction func showPreference(_ sender: Any) {
+        performSegue(withIdentifier: "fromViewControllerSegue", sender: self)
+    }
+    
 }

@@ -152,6 +152,10 @@
                                 <buttonConfiguration key="configuration" style="plain" title="">
                                     <backgroundConfiguration key="background" image="gearshape" catalog="system"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="showPreference:" destination="K2v-FV-qf0" eventType="touchUpInside" id="rcj-cC-3xq"/>
+                                    <segue destination="rhf-TA-qx4" kind="show" identifier="fromViewControllerSegue" id="Siu-KQ-UgN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ev0-Kg-h3S">
                                 <rect key="frame" x="0.0" y="79" width="44" height="40"/>
@@ -188,7 +192,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="OQz-lO-qDg" secondAttribute="trailing" constant="259" id="eMB-G4-yZ8"/>
                             <constraint firstItem="YJH-d2-fRe" firstAttribute="bottom" secondItem="h1y-in-dJq" secondAttribute="bottom" constant="23" id="j2i-pg-1NV"/>
                             <constraint firstItem="OQz-lO-qDg" firstAttribute="leading" secondItem="YJH-d2-fRe" secondAttribute="leading" constant="291" id="lop-cW-8r1"/>
-                            <constraint firstItem="c2Z-ZZ-BtL" firstAttribute="leading" secondItem="j7A-SO-W0u" secondAttribute="leading" constant="228" id="oye-9b-rR3"/>
+                            <constraint firstItem="c2Z-ZZ-BtL" firstAttribute="leading" secondItem="j7A-SO-W0u" secondAttribute="leading" constant="227" id="oye-9b-rR3"/>
                             <constraint firstItem="TUZ-Ar-VAm" firstAttribute="top" secondItem="CuY-LR-6iV" secondAttribute="top" constant="29" id="pmx-fG-bz2"/>
                             <constraint firstItem="oDd-zY-MUB" firstAttribute="top" secondItem="j7A-SO-W0u" secondAttribute="top" id="sRK-25-ilE"/>
                             <constraint firstItem="ev0-Kg-h3S" firstAttribute="leading" secondItem="YJH-d2-fRe" secondAttribute="leading" id="vEz-al-VUi"/>
@@ -343,7 +347,8 @@
                                     <backgroundConfiguration key="background" image="gearshape" catalog="system"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="rhf-TA-qx4" kind="show" id="rHH-cJ-6Up"/>
+                                    <action selector="showPreference:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VI8-pN-YJZ"/>
+                                    <segue destination="rhf-TA-qx4" kind="show" identifier="fromMainMenuSegue" id="hSo-dv-510"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTz-ch-2Yi">
@@ -593,6 +598,9 @@
                                             </attributedString>
                                             <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="resetSettings:" destination="ihf-5I-uxH" eventType="touchUpInside" id="lFm-UQ-eJt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </view>
@@ -649,13 +657,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="jsu-Wk-qwn">
-                                <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                                <rect key="frame" x="0.0" y="0.0" width="852" height="1080"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gj-0M-lYl">
-                                <rect key="frame" x="0.0" y="0.0" width="852" height="140"/>
+                                <rect key="frame" x="0.0" y="0.0" width="852" height="827"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0HZ-v2-Plt">
-                                <rect key="frame" x="0.0" y="191" width="499" height="168"/>
+                                <rect key="frame" x="0.0" y="191" width="499" height="855"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LG7-b3-jjT">
                                         <rect key="frame" x="30" y="0.0" width="439" height="50"/>
@@ -681,7 +689,7 @@
                                         </buttonConfiguration>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bd7-X1-mPB">
-                                        <rect key="frame" x="50" y="111" width="399" height="42"/>
+                                        <rect key="frame" x="50" y="798" width="399" height="42"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
                                         <state key="normal" title="Button"/>
@@ -781,7 +789,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqf-o8-7W7">
-                                        <rect key="frame" x="15" y="74" width="469" height="0.0"/>
+                                        <rect key="frame" x="15" y="74" width="469" height="687"/>
                                         <attributedString key="attributedText">
                                             <fragment content="By Clicking CONTINUE, you agree you have completed all 3 steps.">
                                                 <attributes>
@@ -810,7 +818,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-Ye-Dds">
-                                <rect key="frame" x="515" y="191" width="337" height="168"/>
+                                <rect key="frame" x="515" y="191" width="337" height="855"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lka-vl-xeT">
                                         <rect key="frame" x="0.0" y="0.0" width="337" height="70"/>
@@ -916,10 +924,10 @@
             </objects>
             <point key="canvasLocation" x="-726" y="-431"/>
         </scene>
-        <!--Preference-->
+        <!--Preference View Controller-->
         <scene sceneID="UV1-iP-Nko">
             <objects>
-                <viewController title="Preference" id="rhf-TA-qx4" sceneMemberID="viewController">
+                <viewController id="rhf-TA-qx4" customClass="PreferenceViewController" customModule="OpenCVSample_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aIr-qK-1Sk">
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -941,6 +949,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="">
                                     <backgroundConfiguration key="background" image="chevron.compact.left" catalog="system"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="goBack:" destination="rhf-TA-qx4" eventType="touchUpInside" id="a4A-Ja-8jd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wt4-8X-PYi">
                                 <rect key="frame" x="20" y="136" width="59" height="24"/>
@@ -1053,9 +1064,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Siu-KQ-UgN"/>
         <segue reference="gmJ-ug-Abt"/>
-        <segue reference="6VO-Uu-pTY"/>
-        <segue reference="XsV-Vy-QAG"/>
+        <segue reference="9Tr-nK-v3a"/>
+        <segue reference="R1e-Jh-NVK"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="1920" height="1080"/>
