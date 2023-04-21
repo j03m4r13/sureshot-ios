@@ -421,6 +421,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }else{
                 if(self.playType == "10Shots"){
                     let detected = OpenCV.detectLaser(capturedImage, withH: s1)
+                    //let detected = false
                     if (detected && !self.showingResult && self.shotsCount < 9){
                         print("Detected")
                         self.isPlaying = false
@@ -495,6 +496,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     }
                     DispatchQueue.main.async(execute: {
                         if(self.showingResult != true) {
+                            
+                            //self.imageView.image = OpenCV.detectLaser2(capturedImage, withH: self.s1)//capturedImagee
+                            
                             self.imageView.image = capturedImage
                         } else {
                             self.imageView.image = self.resultImg

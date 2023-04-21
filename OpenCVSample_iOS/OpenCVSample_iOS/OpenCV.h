@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (nonnull UIImage*)calib:(UIImage *)image withH:(float) H;
 + (nonnull UIImage*)detectRed:(UIImage *)image withOrigFrame:(UIImage *) origFrame withXYArray:(CGPoint[])XYArray withIndex: (int) index;
 + (nonnull UIImage*)show10Results:(UIImage *)image withOrigFrame:(UIImage *) origFrame withXYArray:(CGPoint[])XYArray;
++ (nonnull UIImage*)detectLaser2:(UIImage *)image withH:(float) H;
 @end
 
 NS_ASSUME_NONNULL_END
