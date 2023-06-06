@@ -130,7 +130,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 		self.output.videoSettings = [ kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA) ]
 		let queue: DispatchQueue = DispatchQueue(label: "videocapturequeue", attributes: [])
 		self.output.setSampleBufferDelegate(self, queue: queue)
-		self.output.alwaysDiscardsLateVideoFrames = true
+		self.output.alwaysDiscardsLateVideoFrames = false
 		if self.session.canAddOutput(self.output) {
 			self.session.addOutput(self.output)
 		} else {
@@ -421,8 +421,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }else{
                 if(self.playType == "10Shots"){
                     let detected = OpenCV.detectLaser(capturedImage, withH: s1)
-                    //let detected = false
-                    if (detected && !self.showingResult && self.shotsCount < 9){
+                    //print("DETECTED \(detected)")
+                    //let detected = 0
+                    if (detected > 0 && !self.showingResult && self.shotsCount < 9){
                         print("Detected")
                         self.isPlaying = false
                         self.showingResult = true
@@ -452,7 +453,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                             self.showingResult = false
                         }
                         
-                    }else if(detected && !self.showingResult && self.shotsCount == 9){
+                    }else if(detected > 0 && !self.showingResult && self.shotsCount == 9){
                         print("Detected ALL 10")
                         self.isPlaying = false
                         self.showingResult = true
@@ -514,7 +515,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     
                     if(timerHasRan){
                         let detected = OpenCV.detectLaser(capturedImage, withH: s1)
-                        if (detected && !self.showingResult){
+                        if (detected > 0 && !self.showingResult){
                             self.elapsedTime = ((CACurrentMediaTime() * 1000.0) - self.timeNow) / 1000
                             self.isPlaying = false
                             self.showingResult = true
