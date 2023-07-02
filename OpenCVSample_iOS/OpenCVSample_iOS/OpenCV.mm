@@ -13,6 +13,7 @@
 #pragma clang diagnostic pop
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import "OpenCV.h"
 
 /// Converts an UIImage to Mat.
@@ -100,7 +101,7 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
 //	UIImage *grayImage = MatToUIImage(grayMat);
 //	return RestoreUIImageOrientation(grayImage, image);
 //}
-+ (bool)detectLaser:(UIImage *)image withH:(float) H {
++ (int)detectLaser:(UIImage *)image withH:(float) H {
     cv::Mat mat1;
     cv::Mat mat2;
     cv::Mat mat3;
@@ -131,12 +132,22 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
 //    cv::Scalar upper_range(100, 255, 250);
 //    cv::Scalar lower_range_b(100 , 200, 20);
 //    cv::Scalar upper_range_b(179, 255, 250);
-
-    cv::Scalar lower_range(150, 200, 10);
-    cv::Scalar upper_range(170, 255, 25);
-    cv::Scalar lower_range_b(190 , 250, 10);
-    cv::Scalar upper_range_b(210, 255, 30);
-
+    // working for red on black
+//    cv::Scalar lower_range(150, 200, 10);
+//    cv::Scalar upper_range(170, 255, 25);
+//    cv::Scalar lower_range_b(190 , 250, 10);
+//    cv::Scalar upper_range_b(210, 255, 30);
+    
+    // test for both red on black and white
+    cv::Scalar lower_range(50, 70, 0);
+    cv::Scalar upper_range(100, 255, 10);
+    cv::Scalar lower_range_b(100 , 100, 10);
+    cv::Scalar upper_range_b(179, 255, 25);
+//    cv::Scalar lower_range(150, 70, 10);
+//    cv::Scalar upper_range(170, 255, 25);
+//    cv::Scalar lower_range_b(190 , 100, 10);
+//    cv::Scalar upper_range_b(210, 255, 30);
+    
     cv::inRange(mat1, lower_range, upper_range, mat2);
     cv::inRange(mat1, lower_range_b, upper_range_b, mat3);
     cv::bitwise_or(mat2, mat3, dst);
@@ -160,13 +171,93 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
         
     }
     if (contourCntr >= 1)
-        return true;
-    
-    return false;
+        return contourCntr;
+
+    return 0;
 //    UIImage *contoured = MatToUIImage(dst);
 //    return RestoreUIImageOrientation(contoured, image);
 }
 
++ (nonnull UIImage*)detectLaser2:(UIImage *)image withH:(float) H {
+    cv::Mat mat1;
+    cv::Mat mat2;
+    cv::Mat mat3;
+    cv::Mat mat;
+    cv::Mat dst;
+    std::vector<cv::Vec4i> hierarchy;
+    std::vector<std::vector<cv::Point> > contours;
+    UIImageToMat(image, mat);
+    cv::bitwise_not(mat, mat);
+    cv::cvtColor(mat, mat1, cv::COLOR_BGR2HSV);
+    cv::GaussianBlur(mat, mat1, cv::Size(5.0, 5.0), 2.0);
+//    cv::Scalar lower_range(0.0, 70.0, 50.0);
+//    cv::Scalar upper_range(10.0, 255.0, 255.0);
+//    cv::Scalar lower_range_b(0.0, 70.0, 50.0);
+//    cv::Scalar upper_range_b(30.0, 255.0, 255.0);
+//    cv::Scalar lower_range(230, 100, 50);
+//    cv::Scalar upper_range(250, 255, 255);
+//    cv::Scalar lower_range_b(230 , 100, 50);
+//    cv::Scalar upper_range_b(10, 255, 255);
+        //working at night
+//    cv::Scalar lower_range(240, 200, 50);
+//    cv::Scalar upper_range(255, 255, 250);
+//    cv::Scalar lower_range_b(245 , 200, 50);
+//    cv::Scalar upper_range_b(255, 255, 250);
+
+//
+//    cv::Scalar lower_range(50, 200, 20);
+//    cv::Scalar upper_range(100, 255, 250);
+//    cv::Scalar lower_range_b(100 , 200, 20);
+//    cv::Scalar upper_range_b(179, 255, 250);
+    // working for me
+//    cv::Scalar lower_range(150, 200, 10);
+//    cv::Scalar upper_range(170, 255, 25);
+//    cv::Scalar lower_range_b(190 , 250, 10);
+//    cv::Scalar upper_range_b(210, 255, 30);
+
+    // working for me for red
+//    cv::Scalar lower_range(150, 70, 10);
+//    cv::Scalar upper_range(170, 255, 25);
+//    cv::Scalar lower_range_b(190 , 100, 10);
+//    cv::Scalar upper_range_b(210, 255, 30);
+    
+    //testing for laser on white area
+    cv::Scalar lower_range(50, 70, 10);
+    cv::Scalar upper_range(100, 255, 25);
+    cv::Scalar lower_range_b(100 , 100, 10);
+    cv::Scalar upper_range_b(179, 255, 30);
+    cv::inRange(mat1, lower_range, upper_range, mat2);
+    cv::inRange(mat1, lower_range_b, upper_range_b, mat3);
+    cv::bitwise_or(mat2, mat3, dst);
+    cv::findContours(dst, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+    int contourCntr;
+    for(contourCntr = 0; contourCntr < contours.size(); contourCntr++){
+        if(contourCntr >= 1) {
+            
+            break;
+        }
+        cv::Mat_<cv::Point2f> approxCurve;
+   
+        cv::Mat_<cv::Point2f> contour2f = cv::Mat(contours[contourCntr]);
+
+
+        double approxDistance = cv::arcLength(contour2f, true) * 0.02;
+        cv::approxPolyDP(contour2f, approxCurve, approxDistance, true);
+        cv::Mat points = cv::Mat(approxCurve); // define a matrix of 2D points
+        cv::Rect rect = cv::boundingRect(points);
+        
+        double shotX = rect.x + (rect.width / 2.0);
+        double shotY = rect.y + (rect.height / 2.0);
+        
+        
+    }
+//    if (contourCntr >= 1)
+//        return true;
+//
+//    return false;
+    UIImage *contoured = MatToUIImage(dst);
+    return RestoreUIImageOrientation(contoured, image);
+}
 
 + (nonnull UIImage*)detectRed:(UIImage *)image withOrigFrame:(UIImage *) origFrame withXYArray:(CGPoint[])XYArray withIndex: (int) index{
     cv::Mat mat1;
@@ -198,11 +289,17 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
 //    cv::Scalar upper_range(100, 255, 250);
 //    cv::Scalar lower_range_b(100 , 200, 20);
 //    cv::Scalar upper_range_b(179, 255, 250);
+    // working for red on black
+//    cv::Scalar lower_range(150, 200, 10);
+//    cv::Scalar upper_range(170, 255, 25);
+//    cv::Scalar lower_range_b(190 , 250, 10);
+//    cv::Scalar upper_range_b(210, 255, 30);
 
-    cv::Scalar lower_range(150, 200, 10);
-    cv::Scalar upper_range(170, 255, 25);
-    cv::Scalar lower_range_b(190 , 250, 10);
-    cv::Scalar upper_range_b(210, 255, 30);
+    // test for both red on black and white
+    cv::Scalar lower_range(50, 70, 10);
+    cv::Scalar upper_range(100, 255, 25);
+    cv::Scalar lower_range_b(100 , 100, 10);
+    cv::Scalar upper_range_b(179, 255, 30);
 
     cv::inRange(mat1, lower_range, upper_range, mat2);
     cv::inRange(mat1, lower_range_b, upper_range_b, mat3);

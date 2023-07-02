@@ -70,6 +70,10 @@ class TimedShotPopupViewController: UIViewController {
             }
         }
     }
+    @IBAction func resetSettings(_ sender: Any) {
+        shotInterval.value = 5
+        numRounds.value = 5
+    }
     
     @IBAction func performSegue(_ sender: Any) {
         performSegue(withIdentifier: "timedSeqSegue", sender: self)

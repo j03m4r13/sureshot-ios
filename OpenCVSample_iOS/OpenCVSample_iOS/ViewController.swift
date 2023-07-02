@@ -82,6 +82,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        UIApplication.shared.isIdleTimerDisabled = true
         s1 = 1.0
         zoomLevel = 1
         shotsCount = 0
@@ -98,7 +99,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.countDownLabel.text = ""
 		// Prepare a video capturing session.
 		self.session = AVCaptureSession()
-		self.session.sessionPreset = AVCaptureSession.Preset.vga640x480 // not work in iOS simulator
+        self.session.sessionPreset = AVCaptureSession.Preset.vga640x480 // not work in iOS simulator
 		guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back) else {
 			print("no device")
 			return
@@ -129,7 +130,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 		self.output.videoSettings = [ kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA) ]
 		let queue: DispatchQueue = DispatchQueue(label: "videocapturequeue", attributes: [])
 		self.output.setSampleBufferDelegate(self, queue: queue)
-		self.output.alwaysDiscardsLateVideoFrames = true
+		self.output.alwaysDiscardsLateVideoFrames = false
 		if self.session.canAddOutput(self.output) {
 			self.session.addOutput(self.output)
 		} else {
@@ -149,6 +150,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
 		self.session.startRunning()
 	}
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+        
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let currentValue = sender.value
         s1 = currentValue
@@ -334,6 +342,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             self.showingResult = false
             self.firstFrame = true
             self.countDownLabel.text = ""
+            self.readyText.text = ""
 
         }
     }
@@ -412,7 +421,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }else{
                 if(self.playType == "10Shots"){
                     let detected = OpenCV.detectLaser(capturedImage, withH: s1)
-                    if (detected && !self.showingResult && self.shotsCount < 9){
+                    //print("DETECTED \(detected)")
+                    //let detected = 0
+                    if (detected > 0 && !self.showingResult && self.shotsCount < 9){
                         print("Detected")
                         self.isPlaying = false
                         self.showingResult = true
@@ -435,14 +446,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                         }
                         timer.fire()
     //                    // Schedule a task to stop the timer after 3 seconds
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             timer.invalidate()
                             print("Timer stopped")
                             self.isPlaying = false
                             self.showingResult = false
                         }
                         
-                    }else if(detected && !self.showingResult && self.shotsCount == 9){
+                    }else if(detected > 0 && !self.showingResult && self.shotsCount == 9){
                         print("Detected ALL 10")
                         self.isPlaying = false
                         self.showingResult = true
@@ -486,6 +497,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     }
                     DispatchQueue.main.async(execute: {
                         if(self.showingResult != true) {
+                            
+                            //self.imageView.image = OpenCV.detectLaser2(capturedImage, withH: self.s1)//capturedImagee
+                            
                             self.imageView.image = capturedImage
                         } else {
                             self.imageView.image = self.resultImg
@@ -501,7 +515,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     
                     if(timerHasRan){
                         let detected = OpenCV.detectLaser(capturedImage, withH: s1)
-                        if (detected && !self.showingResult){
+                        if (detected > 0 && !self.showingResult){
                             self.elapsedTime = ((CACurrentMediaTime() * 1000.0) - self.timeNow) / 1000
                             self.isPlaying = false
                             self.showingResult = true
@@ -601,4 +615,20 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
 
 	}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromViewControllerSegue" {
+            if let destinationVC = segue.destination as? PreferenceViewController {
+
+                destinationVC.previousScreen = "ViewController"
+                destinationVC.playType = self.playType
+                destinationVC.timedShots = self.timedShots ?? false
+   
+
+            }
+        }
+    }
+    @IBAction func showPreference(_ sender: Any) {
+        performSegue(withIdentifier: "fromViewControllerSegue", sender: self)
+    }
+    
 }
