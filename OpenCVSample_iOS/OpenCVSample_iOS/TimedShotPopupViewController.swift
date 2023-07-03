@@ -10,59 +10,64 @@ import UIKit
 import Foundation
 
 class TimedShotPopupViewController: UIViewController {
-    @IBOutlet weak var numRounds: UISlider!
     
-    @IBOutlet weak var shotInterval: UISlider!
+    @IBOutlet weak var numberOfRoundTextField: UITextField!
+    @IBOutlet weak var shotIntervalTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        numRounds.isContinuous = false
-        shotInterval.isContinuous = false
-      
+        
         if let shotsPerRound = UserDefaults.standard.string(forKey: "shotsPerRound") {
-            let shotsRound = Int(shotsPerRound)
-            print("The saved value is: \(shotsPerRound)")
-            numRounds.value = Float(shotsPerRound) ?? 3.0
+            if let shotsRound = Int(shotsPerRound) {
+                print("The saved value is: \(shotsRound)")
+                numberOfRoundTextField.text = String(shotsRound)
+            }
         } else {
             print("No value was saved for key 'shotsPerRound'")
             // Save a value to UserDefaults
             let shotsPerRound = 3
-            UserDefaults.standard.set(shotsPerRound, forKey: "shotsPerRound")
-            numRounds.value = Float(shotsPerRound)
-
+            UserDefaults.standard.set(String(shotsPerRound), forKey: "shotsPerRound")
+            numberOfRoundTextField.text = String(shotsPerRound)
         }
+        
         if let shotsInterval = UserDefaults.standard.string(forKey: "shotsInterval") {
-            let shotsIntervalInt = Int(shotsInterval)
-            print("The saved value is: \(shotsIntervalInt)")
-            shotInterval.value = Float(shotsInterval) ?? 5.0
+            if let shotsIntervalInt = Int(shotsInterval) {
+                print("The saved value is: \(shotsIntervalInt)")
+                shotIntervalTextField.text = String(shotsIntervalInt)
+            }
         } else {
-            print("No value was saved for key 'shotsPerRound'")
+            print("No value was saved for key 'shotsInterval'")
             // Save a value to UserDefaults
             let shotsInterval = 5
-            UserDefaults.standard.set(shotsInterval, forKey: "shotsInterval")
-            shotInterval.value = Float(shotsInterval)
-
+            UserDefaults.standard.set(String(shotsInterval), forKey: "shotsInterval")
+            shotIntervalTextField.text = String(shotsInterval)
         }
     }
+    
     override var shouldAutorotate: Bool {
         return false
     }
+    
     @IBAction func numberOfRoundsSlide(_ sender: Any) {
         
     }
+    
     @IBAction func shotIntervalSlide(_ sender: Any) {
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "timedSeqSegue" {
             print("TIMED SEGUE FIRED")
             if let destinationVC = segue.destination as? ViewController {
-                let shotsPerRound = Int(numRounds.value)
+                if let shotsPerRound = Int(numberOfRoundTextField.text ?? "") {
+                    UserDefaults.standard.set(String(shotsPerRound), forKey: "shotsPerRound")
+                    numberOfRoundTextField.text = String(shotsPerRound)
+                }
                 
-                UserDefaults.standard.set(shotsPerRound, forKey: "shotsPerRound")
-                numRounds.value = Float(shotsPerRound)
-                let shotsInterval = Int(shotInterval.value)
-                UserDefaults.standard.set(shotsInterval, forKey: "shotsInterval")
-                shotInterval.value = Float(shotsInterval)
+                if let shotsInterval = Int(shotIntervalTextField.text ?? "") {
+                    UserDefaults.standard.set(String(shotsInterval), forKey: "shotsInterval")
+                    shotIntervalTextField.text = String(shotsInterval)
+                }
 
                 destinationVC.timedShots = true
                 destinationVC.playType = "TimedShots"
@@ -70,9 +75,10 @@ class TimedShotPopupViewController: UIViewController {
             }
         }
     }
+    
     @IBAction func resetSettings(_ sender: Any) {
-        shotInterval.value = 5
-        numRounds.value = 5
+        shotIntervalTextField.text = "5"
+        numberOfRoundTextField.text = "5"
     }
     
     @IBAction func performSegue(_ sender: Any) {

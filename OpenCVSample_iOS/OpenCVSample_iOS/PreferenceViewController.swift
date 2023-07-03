@@ -13,8 +13,20 @@ class PreferenceViewController: UIViewController {
     var previousScreen = ""
     var playType = ""
     var timedShots = false
+    @IBOutlet var picker: UIPickerView!
+    @IBOutlet var shootingPicker: UIPickerView!
+    
+    private var pickerData = ["Steel", "Brass Dropping", "Fun/Alien"]
+    private var shootingPickerData = ["10 Shots", "Unlimited Shots"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        picker.dataSource = self
+        picker.delegate = self
+        
+        shootingPicker.dataSource = self
+        shootingPicker.delegate = self
     }
     override var shouldAutorotate: Bool {
         return false
@@ -32,5 +44,32 @@ class PreferenceViewController: UIViewController {
             present(destinationVC, animated: true, completion: nil)
         }
     }
-    
 }
+
+extension PreferenceViewController: UIPickerViewDataSource {
+        func numberOfComponents(in pickerView: UIPickerView) -> Int {
+            return 1
+        }
+        
+        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            if pickerView == picker {
+                return pickerData.count
+            } else if pickerView == shootingPicker {
+                return shootingPickerData.count
+            }
+            return 0
+        }
+    }
+    
+    // Modify the extension for UIPickerViewDelegate
+    extension PreferenceViewController: UIPickerViewDelegate {
+        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            if pickerView == picker {
+                return pickerData[row]
+            } else if pickerView == shootingPicker {
+                return shootingPickerData[row]
+            }
+            return nil
+        }
+    }
+
