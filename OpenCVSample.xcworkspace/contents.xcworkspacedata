@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:OpenCVSample_macOS/OpenCVSample_macOS.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:OpenCVSample_iOS/OpenCVSample_iOS.xcodeproj">
    </FileRef>
 </Workspace>
