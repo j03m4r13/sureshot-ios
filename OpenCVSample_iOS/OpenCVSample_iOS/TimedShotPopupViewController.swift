@@ -43,6 +43,9 @@ class TimedShotPopupViewController: UIViewController {
             shotIntervalTextField.text = String(shotsInterval)
         }
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true) // This will hide the keyboard for any active text field or text view
+    }
     
     override var shouldAutorotate: Bool {
         return false

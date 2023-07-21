@@ -16,6 +16,10 @@
 		01B5798D29CEE4230087AEA1 /* gunshot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01B5798C29CEE4230087AEA1 /* gunshot.mp3 */; };
 		01CCC1FC29D2ACC300D84829 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01CCC1FB29D2ACC300D84829 /* Storyboard.storyboard */; };
 		01CCC1FE29D2AD3500D84829 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCC1FD29D2AD3500D84829 /* MainController.swift */; };
+		01FB610A2A680F5C00BAFC2A /* sheels.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01FB61062A680F5C00BAFC2A /* sheels.mp3 */; };
+		01FB610B2A680F5C00BAFC2A /* blaster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01FB61072A680F5C00BAFC2A /* blaster.mp3 */; };
+		01FB610C2A680F5C00BAFC2A /* shooter_ready.wav in Resources */ = {isa = PBXBuildFile; fileRef = 01FB61082A680F5C00BAFC2A /* shooter_ready.wav */; };
+		01FB610D2A680F5C00BAFC2A /* steel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01FB61092A680F5C00BAFC2A /* steel.mp3 */; };
 		311301CF23C023B700B7C7A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311301CE23C023B700B7C7A5 /* AppDelegate.swift */; };
 		311301D123C023B700B7C7A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311301D023C023B700B7C7A5 /* SceneDelegate.swift */; };
 		311301D323C023B700B7C7A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311301D223C023B700B7C7A5 /* ViewController.swift */; };
@@ -36,6 +40,10 @@
 		01B5798C29CEE4230087AEA1 /* gunshot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gunshot.mp3; sourceTree = "<group>"; };
 		01CCC1FB29D2ACC300D84829 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		01CCC1FD29D2AD3500D84829 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		01FB61062A680F5C00BAFC2A /* sheels.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sheels.mp3; sourceTree = "<group>"; };
+		01FB61072A680F5C00BAFC2A /* blaster.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blaster.mp3; sourceTree = "<group>"; };
+		01FB61082A680F5C00BAFC2A /* shooter_ready.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shooter_ready.wav; sourceTree = "<group>"; };
+		01FB61092A680F5C00BAFC2A /* steel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = steel.mp3; sourceTree = "<group>"; };
 		311301CB23C023B700B7C7A5 /* OpenCVSample_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCVSample_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		311301CE23C023B700B7C7A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		311301D023C023B700B7C7A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				015EB4912A5D7E1B00D70F36 /* opencv2.framework */,
+				01FB61072A680F5C00BAFC2A /* blaster.mp3 */,
+				01FB61062A680F5C00BAFC2A /* sheels.mp3 */,
+				01FB61082A680F5C00BAFC2A /* shooter_ready.wav */,
+				01FB61092A680F5C00BAFC2A /* steel.mp3 */,
 				01A7DD6129D3572D001DD86A /* beep.mp3 */,
 				01B5798C29CEE4230087AEA1 /* gunshot.mp3 */,
 				311301CE23C023B700B7C7A5 /* AppDelegate.swift */,
@@ -175,9 +187,13 @@
 				311301DB23C023B900B7C7A5 /* LaunchScreen.storyboard in Resources */,
 				01A99D6C29D29EBC007A3CFB /* TimedShotPopupView.storyboard in Resources */,
 				01B5798D29CEE4230087AEA1 /* gunshot.mp3 in Resources */,
+				01FB610C2A680F5C00BAFC2A /* shooter_ready.wav in Resources */,
+				01FB610B2A680F5C00BAFC2A /* blaster.mp3 in Resources */,
 				311301D823C023B900B7C7A5 /* Assets.xcassets in Resources */,
+				01FB610A2A680F5C00BAFC2A /* sheels.mp3 in Resources */,
 				311301D623C023B700B7C7A5 /* Main.storyboard in Resources */,
 				01A7DD6229D3572D001DD86A /* beep.mp3 in Resources */,
+				01FB610D2A680F5C00BAFC2A /* steel.mp3 in Resources */,
 				01CCC1FC29D2ACC300D84829 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,7 +370,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.09;
+				CURRENT_PROJECT_VERSION = 1.12;
 				DEVELOPMENT_TEAM = R7QJ726R3T;
 				EXCLUDED_ARCHS = armv64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -363,7 +379,7 @@
 					"$(PROJECT_DIR)/OpenCVSample_iOS",
 				);
 				INFOPLIST_FILE = OpenCVSample_iOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "\nSureShot Laser Training";
+				INFOPLIST_KEY_CFBundleDisplayName = "SureShot Laser Training \nSureShot Laser Training";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -391,7 +407,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.09;
+				CURRENT_PROJECT_VERSION = 1.12;
 				DEVELOPMENT_TEAM = R7QJ726R3T;
 				EXCLUDED_ARCHS = armv64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -400,7 +416,7 @@
 					"$(PROJECT_DIR)/OpenCVSample_iOS",
 				);
 				INFOPLIST_FILE = OpenCVSample_iOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "\nSureShot Laser Training";
+				INFOPLIST_KEY_CFBundleDisplayName = "SureShot Laser Training \nSureShot Laser Training";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

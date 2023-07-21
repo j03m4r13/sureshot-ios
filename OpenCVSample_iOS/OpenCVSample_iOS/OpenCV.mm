@@ -112,7 +112,7 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
     UIImageToMat(image, mat);
     cv::bitwise_not(mat, mat);
     cv::cvtColor(mat, mat1, cv::COLOR_BGR2HSV);
-    cv::GaussianBlur(mat, mat1, cv::Size(5.0, 5.0), 2.0);
+    cv::GaussianBlur(mat, mat1, cv::Size(5.0, 5.0), 0.2);
 //    cv::Scalar lower_range(0.0, 70.0, 50.0);
 //    cv::Scalar upper_range(10.0, 255.0, 255.0);
 //    cv::Scalar lower_range_b(0.0, 70.0, 50.0);
@@ -273,7 +273,7 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
     UIImageToMat(origFrame, origFrameMat);
     cv::bitwise_not(mat, mat);
     cv::cvtColor(mat, mat1, cv::COLOR_BGR2HSV);
-    cv::GaussianBlur(mat, mat1, cv::Size(5.0, 5.0), 2.0);
+    cv::GaussianBlur(mat, mat1, cv::Size(5.0, 5.0), 0.2);
 //
 //    cv::Scalar lower_range(230, 100, 50);
 //    cv::Scalar upper_range(230, 255, 255);
@@ -323,9 +323,10 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
        // circle(origFrameMat, org.opencv.core.Point(shotX, shotY),7, Scalar(0.0, 255.0, 0.0), 2)
     
         CGPoint point = CGPointMake(shotX, shotY);
-        XYArray[index].x = point.x;
-        XYArray[index].y = point.y;
-        
+        if (index != -1) {
+            XYArray[index].x = point.x;
+            XYArray[index].y = point.y;
+        }
         cv::circle(origFrameMat, cv::Point(shotX, shotY), 7, cv::Scalar(0, 255, 0), 5);
 
     }

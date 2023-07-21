@@ -10,8 +10,18 @@ import UIKit
 import Foundation
 
 class MainController: UIViewController {
+    var playType = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let shootingType = UserDefaults.standard.string(forKey: "shootingType") {
+            // DO NOTHING
+                
+        } else {
+            print("No value was saved for key 'shootingType'")
+            // Save a value to UserDefaults
+            UserDefaults.standard.set("10 Shots", forKey: "shootingType")
+        }
+
     }
     override var shouldAutorotate: Bool {
         return false
@@ -22,14 +32,40 @@ class MainController: UIViewController {
 
                 print("10 shots segue fired")
                 destinationVC.timedShots = true
-                destinationVC.playType = "10Shots"
+                if let shootingType = UserDefaults.standard.string(forKey: "shootingType") {
+                    
+                    if shootingType == "10 Shots" {
+                        self.playType = "10Shots"
+                    } else if shootingType == "Unlimited Shots" {
+                        self.playType = "Unlimited Shots"
+
+                    } else {
+                        self.playType = "TimedShots"
+
+                    }
+                        
+                }
+                destinationVC.playType = self.playType
+
                 segue.destination.performSelector(onMainThread: #selector(destinationVC.setPlayType(_:)), with: true, waitUntilDone: false)
             }
         } else if segue.identifier == "fromMainMenuSegue" {
             if let destinationVC = segue.destination as? PreferenceViewController {
+                if let shootingType = UserDefaults.standard.string(forKey: "shootingType") {
+                    
+                    if shootingType == "10 Shots" {
+                        self.playType = "10Shots"
+                    } else if shootingType == "Unlimited Shots" {
+                        self.playType = "Unlimited Shots"
 
-                print("10 shots segue fired")
+                    } else {
+                        self.playType = "TimedShots"
+
+                    }
+                        
+                }
                 destinationVC.previousScreen = "MainMenu"
+                destinationVC.playType = self.playType
    
 
             }
