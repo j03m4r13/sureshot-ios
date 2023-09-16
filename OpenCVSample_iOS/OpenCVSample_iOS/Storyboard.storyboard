@@ -930,7 +930,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1920" height="106"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCi-qQ-3z5">
-                                <rect key="frame" x="20" y="120" width="1880" height="263"/>
+                                <rect key="frame" x="20" y="110" width="1880" height="258"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o7w-8u-awi" userLabel="first-view">
                                         <rect key="frame" x="0.0" y="0.0" width="328" height="266"/>
@@ -1084,8 +1084,8 @@
                             <constraint firstItem="Xlm-Q0-wCx" firstAttribute="leading" secondItem="aIr-qK-1Sk" secondAttribute="leading" id="fLU-EF-VRk"/>
                             <constraint firstItem="P7q-SL-mwI" firstAttribute="top" secondItem="eoj-Tr-AeQ" secondAttribute="top" constant="20" id="iIm-yT-eWG"/>
                             <constraint firstAttribute="trailing" secondItem="Qbp-8x-GFh" secondAttribute="trailing" id="mzV-IK-diU"/>
-                            <constraint firstItem="eoj-Tr-AeQ" firstAttribute="bottom" secondItem="SCi-qQ-3z5" secondAttribute="bottom" constant="10" id="qwn-yC-K8q"/>
-                            <constraint firstItem="SCi-qQ-3z5" firstAttribute="top" secondItem="eoj-Tr-AeQ" secondAttribute="top" constant="120" id="uFo-Xw-ntZ"/>
+                            <constraint firstItem="eoj-Tr-AeQ" firstAttribute="bottom" secondItem="SCi-qQ-3z5" secondAttribute="bottom" constant="25" id="qwn-yC-K8q"/>
+                            <constraint firstItem="SCi-qQ-3z5" firstAttribute="top" secondItem="eoj-Tr-AeQ" secondAttribute="top" constant="110" id="uFo-Xw-ntZ"/>
                             <constraint firstItem="SCi-qQ-3z5" firstAttribute="leading" secondItem="eoj-Tr-AeQ" secondAttribute="leading" constant="20" id="vQz-IW-Bps"/>
                         </constraints>
                     </view>
