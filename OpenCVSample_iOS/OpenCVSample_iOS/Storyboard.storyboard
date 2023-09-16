@@ -17,9 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="D1e-uC-O1K">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="D1e-uC-O1K">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" id="CuY-LR-6iV">
                                 <rect key="frame" x="0.0" y="133" width="896" height="287"/>
@@ -158,6 +157,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YJH-d2-fRe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="D1e-uC-O1K" firstAttribute="top" secondItem="j7A-SO-W0u" secondAttribute="top" id="10Z-Xm-dyW"/>
+                            <constraint firstAttribute="bottom" secondItem="D1e-uC-O1K" secondAttribute="bottom" id="hRY-2J-kCt"/>
+                            <constraint firstItem="D1e-uC-O1K" firstAttribute="leading" secondItem="j7A-SO-W0u" secondAttribute="leading" id="uBj-iZ-prF"/>
+                            <constraint firstAttribute="trailing" secondItem="D1e-uC-O1K" secondAttribute="trailing" id="wyF-eG-dFb"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JcQ-zq-Q12"/>
                     <connections>
@@ -289,12 +294,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-1o-Ztg">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-1o-Ztg">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="yXL-9W-6Ry">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="yXL-9W-6Ry">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="129"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcY-SM-ikR">
                                 <rect key="frame" x="826" y="20" width="50" height="50"/>
@@ -412,10 +417,10 @@
                         <viewLayoutGuide key="safeArea" id="ojs-Gk-7eQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="yXL-9W-6Ry" secondAttribute="bottom" constant="285" id="Fxg-DG-lUV"/>
-                            <constraint firstAttribute="trailing" secondItem="yXL-9W-6Ry" secondAttribute="trailing" id="HYg-7O-MYJ"/>
-                            <constraint firstItem="yXL-9W-6Ry" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="cMg-5B-2FK"/>
-                            <constraint firstItem="yXL-9W-6Ry" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="jki-zk-AUQ"/>
+                            <constraint firstItem="gdf-1o-Ztg" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="CQ2-aM-hxK"/>
+                            <constraint firstAttribute="bottom" secondItem="gdf-1o-Ztg" secondAttribute="bottom" id="EAr-Ps-y00"/>
+                            <constraint firstAttribute="trailing" secondItem="gdf-1o-Ztg" secondAttribute="trailing" id="KMo-va-09S"/>
+                            <constraint firstItem="gdf-1o-Ztg" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="e23-9P-T1q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WgD-YO-bXC"/>
@@ -568,12 +573,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="jsu-Wk-qwn">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="jsu-Wk-qwn">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gj-0M-lYl">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="header" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gj-0M-lYl">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="161"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0HZ-v2-Plt">
                                 <rect key="frame" x="64" y="192" width="394" height="201"/>
@@ -769,10 +774,10 @@
                         <viewLayoutGuide key="safeArea" id="4KJ-FK-AnV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="1gj-0M-lYl" secondAttribute="bottom" constant="253" id="26L-Lp-nMy"/>
-                            <constraint firstItem="1gj-0M-lYl" firstAttribute="leading" secondItem="ul2-k3-xqO" secondAttribute="leading" id="gQr-bG-Ayo"/>
-                            <constraint firstAttribute="trailing" secondItem="1gj-0M-lYl" secondAttribute="trailing" id="mep-n3-sxD"/>
-                            <constraint firstItem="1gj-0M-lYl" firstAttribute="top" secondItem="ul2-k3-xqO" secondAttribute="top" id="ufY-u9-rww"/>
+                            <constraint firstAttribute="trailing" secondItem="jsu-Wk-qwn" secondAttribute="trailing" id="XPA-t1-WRS"/>
+                            <constraint firstItem="jsu-Wk-qwn" firstAttribute="leading" secondItem="ul2-k3-xqO" secondAttribute="leading" id="fKf-lV-KMd"/>
+                            <constraint firstItem="jsu-Wk-qwn" firstAttribute="top" secondItem="ul2-k3-xqO" secondAttribute="top" id="ium-53-mGS"/>
+                            <constraint firstAttribute="bottom" secondItem="jsu-Wk-qwn" secondAttribute="bottom" id="qHv-jN-A2v"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -1069,9 +1074,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Siu-KQ-UgN"/>
-        <segue reference="qbw-7j-aHH"/>
-        <segue reference="9Tr-nK-v3a"/>
-        <segue reference="R1e-Jh-NVK"/>
+        <segue reference="gmJ-ug-Abt"/>
+        <segue reference="6VO-Uu-pTY"/>
+        <segue reference="XsV-Vy-QAG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="1920" height="1080"/>
