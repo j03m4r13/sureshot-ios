@@ -113,30 +113,7 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
     cv::bitwise_not(mat, mat);
     cv::cvtColor(mat, mat1, cv::COLOR_BGR2HSV);
     cv::GaussianBlur(mat, mat1, cv::Size(5.0, 5.0), 0.2);
-//    cv::Scalar lower_range(0.0, 70.0, 50.0);
-//    cv::Scalar upper_range(10.0, 255.0, 255.0);
-//    cv::Scalar lower_range_b(0.0, 70.0, 50.0);
-//    cv::Scalar upper_range_b(30.0, 255.0, 255.0);
-//    cv::Scalar lower_range(230, 100, 50);
-//    cv::Scalar upper_range(250, 255, 255);
-//    cv::Scalar lower_range_b(230 , 100, 50);
-//    cv::Scalar upper_range_b(10, 255, 255);
-        //working at night
-//    cv::Scalar lower_range(240, 200, 50);
-//    cv::Scalar upper_range(255, 255, 250);
-//    cv::Scalar lower_range_b(245 , 200, 50);
-//    cv::Scalar upper_range_b(255, 255, 250);
 
-//
-//    cv::Scalar lower_range(50, 200, 20);
-//    cv::Scalar upper_range(100, 255, 250);
-//    cv::Scalar lower_range_b(100 , 200, 20);
-//    cv::Scalar upper_range_b(179, 255, 250);
-    // working for red on black
-//    cv::Scalar lower_range(150, 200, 10);
-//    cv::Scalar upper_range(170, 255, 25);
-//    cv::Scalar lower_range_b(190 , 250, 10);
-//    cv::Scalar upper_range_b(210, 255, 30);
     
     // test for both red on black and white
     cv::Scalar lower_range(50, 70, 0);
@@ -172,7 +149,7 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
     }
     if (contourCntr >= 1)
         return contourCntr;
-
+    
     return 0;
 //    UIImage *contoured = MatToUIImage(dst);
 //    return RestoreUIImageOrientation(contoured, image);
@@ -330,10 +307,182 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
         cv::circle(origFrameMat, cv::Point(shotX, shotY), 7, cv::Scalar(0, 255, 0), 5);
 
     }
+
     //if (contourCntr >= 1)
     //    return true;
     //
     //return false;
+    UIImage *markedFrame = MatToUIImage(origFrameMat);
+    return RestoreUIImageOrientation(markedFrame, image);
+}
+void drawText(cv::Mat& image, const std::string& text, const cv::Point& position, const cv::Scalar& color, int fontFace, double fontScale, int thickness) {
+    cv::putText(image, text, position, fontFace, fontScale, color, thickness);
+}
++ (nonnull UIImage*)detectReset:(UIImage *)image withOrigFrame:(UIImage *) origFrame {
+    cv::Mat mat1;
+    cv::Mat mat2;
+    cv::Mat mat3;
+    cv::Mat mat;
+    cv::Mat dst;
+    cv::Mat origFrameMat;
+    int X;
+    int Y;
+    
+    std::vector<cv::Vec4i> hierarchy;
+    std::vector<std::vector<cv::Point> > contours;
+    UIImageToMat(image, mat);
+    UIImageToMat(origFrame, origFrameMat);
+    cv::bitwise_not(mat, mat);
+    cv::cvtColor(mat, mat1, cv::COLOR_BGR2HSV);
+    cv::GaussianBlur(mat, mat1, cv::Size(5.0, 5.0), 0.2);
+
+    // test for both red on black and white
+    cv::Scalar lower_range(50, 70, 10);
+    cv::Scalar upper_range(100, 255, 25);
+    cv::Scalar lower_range_b(100 , 100, 10);
+    cv::Scalar upper_range_b(179, 255, 30);
+
+    cv::inRange(mat1, lower_range, upper_range, mat2);
+    cv::inRange(mat1, lower_range_b, upper_range_b, mat3);
+    cv::bitwise_or(mat2, mat3, dst);
+    cv::findContours(dst, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+    int contourCntr;
+    for(contourCntr = 0; contourCntr < contours.size(); contourCntr++){
+        if(contourCntr >= 1) break;
+        cv::Mat_<cv::Point2f> approxCurve;
+   
+        cv::Mat_<cv::Point2f> contour2f = cv::Mat(contours[contourCntr]);
+
+        
+        double approxDistance = cv::arcLength(contour2f, true) * 0.02;
+        cv::approxPolyDP(contour2f, approxCurve, approxDistance, true);
+        cv::Mat points = cv::Mat(approxCurve); // define a matrix of 2D points
+        cv::Rect rect = cv::boundingRect(points);
+        
+        double shotX = rect.x + (rect.width / 2.0);
+        double shotY = rect.y + (rect.height / 2.0);
+       // circle(origFrameMat, org.opencv.core.Point(shotX, shotY),7, Scalar(0.0, 255.0, 0.0), 2)
+    
+        CGPoint point = CGPointMake(shotX, shotY);
+        X = shotX;
+        Y = shotY;
+        cv::circle(origFrameMat, cv::Point(shotX, shotY), 7, cv::Scalar(0, 255, 0), 5);
+
+    }
+    cv::Scalar color(0, 255, 255); // Red color in BGR
+    cv::Rect rectangle((image.size.width / 2) - 60, (image.size.height / 2) - 70,100, 100); // x, y, width, height
+
+    cv::rectangle(origFrameMat, rectangle, color, 2); // Draw the rectangle
+    
+    cv::Scalar colorWhite(0, 200, 255); // Red color in BGR
+    std::string text = "RESET";
+    cv::Point position((image.size.width / 2) - 36, (image.size.height / 2) - 20); // Position where you want to start drawing the text
+    int fontFace = cv::FONT_HERSHEY_SIMPLEX; // Font type
+    double fontScale = 0.6; // Font scale factor
+    int thickness = 2; // Thickness of the text strokes
+
+    drawText(origFrameMat, text, position, colorWhite, fontFace, fontScale, thickness);
+
+    //if (contourCntr >= 1)
+    //    return true;
+    //
+    //return false;
+    UIImage *markedFrame = MatToUIImage(origFrameMat);
+    return RestoreUIImageOrientation(markedFrame, image);
+}
+
++ (int)detectResetShot:(UIImage *)image withOrigFrame:(UIImage *) origFrame {
+    cv::Mat mat1;
+    cv::Mat mat2;
+    cv::Mat mat3;
+    cv::Mat mat;
+    cv::Mat dst;
+    cv::Mat origFrameMat;
+    int X;
+    int Y;
+    
+    std::vector<cv::Vec4i> hierarchy;
+    std::vector<std::vector<cv::Point> > contours;
+    UIImageToMat(image, mat);
+    UIImageToMat(origFrame, origFrameMat);
+    cv::bitwise_not(mat, mat);
+    cv::cvtColor(mat, mat1, cv::COLOR_BGR2HSV);
+    cv::GaussianBlur(mat, mat1, cv::Size(5.0, 5.0), 0.2);
+
+    // test for both red on black and white
+    cv::Scalar lower_range(50, 70, 10);
+    cv::Scalar upper_range(100, 255, 25);
+    cv::Scalar lower_range_b(100 , 100, 10);
+    cv::Scalar upper_range_b(179, 255, 30);
+
+    cv::inRange(mat1, lower_range, upper_range, mat2);
+    cv::inRange(mat1, lower_range_b, upper_range_b, mat3);
+    cv::bitwise_or(mat2, mat3, dst);
+    cv::findContours(dst, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+    int contourCntr;
+    for(contourCntr = 0; contourCntr < contours.size(); contourCntr++){
+        if(contourCntr >= 1) break;
+        cv::Mat_<cv::Point2f> approxCurve;
+   
+        cv::Mat_<cv::Point2f> contour2f = cv::Mat(contours[contourCntr]);
+
+        
+        double approxDistance = cv::arcLength(contour2f, true) * 0.02;
+        cv::approxPolyDP(contour2f, approxCurve, approxDistance, true);
+        cv::Mat points = cv::Mat(approxCurve); // define a matrix of 2D points
+        cv::Rect rect = cv::boundingRect(points);
+        
+        double shotX = rect.x + (rect.width / 2.0);
+        double shotY = rect.y + (rect.height / 2.0);
+       // circle(origFrameMat, org.opencv.core.Point(shotX, shotY),7, Scalar(0.0, 255.0, 0.0), 2)
+    
+        CGPoint point = CGPointMake(shotX, shotY);
+        X = shotX;
+        Y = shotY;
+        cv::circle(origFrameMat, cv::Point(shotX, shotY), 7, cv::Scalar(0, 255, 0), 5);
+
+    }
+    cv::Scalar color(0, 255, 255); // Red color in BGR
+    cv::Rect rectangle((image.size.width / 2) - 60, (image.size.height / 2) - 70,100, 100); // x, y, width, height
+
+    cv::rectangle(origFrameMat, rectangle, color, 2); // Draw the rectangle
+    
+    cv::Scalar colorWhite(255, 255, 255); // Red color in BGR
+    std::string text = "R E S E T";
+    cv::Point position((image.size.width / 2) - 30, (image.size.height / 2)); // Position where you want to start drawing the text
+    int fontFace = cv::FONT_HERSHEY_SIMPLEX; // Font type
+    double fontScale = 0.6; // Font scale factor
+    int thickness = 1; // Thickness of the text strokes
+
+    drawText(origFrameMat, text, position, colorWhite, fontFace, fontScale, thickness);
+
+    int detect = 0;
+    if ( X >= rectangle.x && X <= rectangle.x + rectangle.width && Y >= rectangle.y && Y <= rectangle.y + rectangle.height ) {
+        detect = 1;
+    }
+    //if (contourCntr >= 1)
+    //    return true;
+    //
+    //return false;
+    return detect;
+}
+
++ (nonnull UIImage*)showPrevResults:(UIImage *)image withOrigFrame:(UIImage *) origFrame withLastShotIndex: (int) lastShotIndex withXYArray:(CGPoint[])XYArray {
+    cv::Mat mat1;
+    cv::Mat mat2;
+    cv::Mat mat3;
+    cv::Mat mat;
+    cv::Mat dst;
+    cv::Mat origFrameMat;
+    
+    UIImageToMat(image, mat);
+    UIImageToMat(origFrame, origFrameMat);
+    for(int i = 0; i < lastShotIndex; i++){
+        cv::circle(origFrameMat, cv::Point(XYArray[i].x, XYArray[i].y), 7, cv::Scalar(150, 140, 100), 3);
+
+    }
+    //cv::circle(origFrameMat, cv::Point(shotX, shotY), 7, cv::Scalar(0, 255, 0), 5);
+
     UIImage *markedFrame = MatToUIImage(origFrameMat);
     return RestoreUIImageOrientation(markedFrame, image);
 }

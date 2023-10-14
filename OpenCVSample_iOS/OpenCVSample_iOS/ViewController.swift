@@ -60,6 +60,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var soundType = ""
     var shootingType = ""
     var shooterReadySoundPlaying: Bool! = false
+    var isShowingResetPane: Bool! = false;
+    var imageReset: UIImage!
     
     @objc func setPlayType(_ value: Bool) {
 
@@ -241,6 +243,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.shotsCount = 0
         self.timerCount = 3
         self.timedShotCount = 0
+        self.isShowingResetPane = false
         
         if(startBtn.currentAttributedTitle?.string == "START"){
             
@@ -503,16 +506,24 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 firstFrameImg = capturedImage
                 firstFrame = false
             }else{
-                if(self.playType == "10Shots"){
+                if(self.playType == "10Shots" && !self.isShowingResetPane){
                     let detected = OpenCV.detectLaser(capturedImage, withH: s1)
                     //print("DETECTED \(detected)")
                     //let detected = 0
-                    if (detected > 0 && !self.showingResult && self.shotsCount < 9){
+                    if (detected > 0 && !self.showingResult && self.shotsCount < 9) {
                         print("Detected")
                         self.isPlaying = false
                         self.showingResult = true
+                        var tempImg : UIImage!
                         self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: firstFrameImg, withXYArray: &XYArray, with: shotsCount)
                         shotsCount = shotsCount + 1
+                        if (self.shotsCount > 0) { // super impose previous shots
+                            tempImg = OpenCV.showPrevResults(capturedImage, withOrigFrame: self.resultImg, withLastShotIndex: self.shotsCount - 1, withXYArray: &self.XYArray)
+                            self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: tempImg, withXYArray: &XYArray, with: shotsCount - 1) // just redo previous call hence - 1
+                            
+                        }
+                        
+                        
                         print("\(XYArray)")
                         // Create a timer that fires every second and repeats indefinitely
                         var counterSec = 0
@@ -572,10 +583,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                             
                             let attributedString = NSAttributedString(string: "START", attributes: [.font: boldCopperFont])
                             self.startBtn.setAttributedTitle(attributedString, for: .normal)
-                            self.hasStarted = false
+                            self.hasStarted = true // to keep detecting
                             self.showingResult = false
                             self.countDownLabel.text = ""
-                            
+                            self.isShowingResetPane = true
+                            self.firstFrame = true
                         }
                         
                     }
@@ -583,8 +595,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                         if(self.showingResult != true) {
                             
                             //self.imageView.image = OpenCV.detectLaser2(capturedImage, withH: self.s1)//capturedImagee
-                            
-                            self.imageView.image = capturedImage
+                            if (self.shotsCount > 0) {
+                                self.imageView.image = self.resultImg //OpenCV.showPrevResults(self.resultImg, withOrigFrame: self.firstFrameImg, withLastShotIndex: self.shotsCount - 1, withXYArray: &self.XYArray)
+                                
+                            } else {
+                                self.imageView.image = capturedImage
+                            }
+                            //
                         } else {
                             self.imageView.image = self.resultImg
                             if(!self.isPlaying){
@@ -594,6 +611,28 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                             }
                         }
                         
+                    })
+                } else if(self.playType == "10Shots" && self.isShowingResetPane){
+                    self.imageReset = OpenCV.detectReset(capturedImage, withOrigFrame: firstFrameImg)
+                    let detect = OpenCV.detectResetShot(capturedImage, withOrigFrame: firstFrameImg)
+                    if (detect == 1) {
+                        self.firstFrame = true
+                        self.isPlaying = false
+                        self.hasStarted = false
+                        print("REESET DETECTED")
+                        DispatchQueue.main.async(execute: {
+                            if(!self.isPlaying){
+                                self.isPlaying = true
+                                self.playSound()
+                                
+                            }
+
+                            self.startShoot(self.startBtn!)
+                        })
+                        
+                    }
+                    DispatchQueue.main.async(execute: {
+                        self.imageView.image = self.imageReset
                     })
                 } else if (self.playType == "Unlimited Shots") {
                     let detected = OpenCV.detectLaser(capturedImage, withH: s1)

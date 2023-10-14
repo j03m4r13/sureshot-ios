@@ -370,7 +370,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.12;
+				CURRENT_PROJECT_VERSION = 1.13;
 				DEVELOPMENT_TEAM = R7QJ726R3T;
 				EXCLUDED_ARCHS = armv64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -385,7 +385,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sureshotproducts.sureshot;
 				PRODUCT_NAME = "SureShot Laser Training";
@@ -407,7 +407,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.12;
+				CURRENT_PROJECT_VERSION = 1.13;
 				DEVELOPMENT_TEAM = R7QJ726R3T;
 				EXCLUDED_ARCHS = armv64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -422,7 +422,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sureshotproducts.sureshot;
 				PRODUCT_NAME = "SureShot Laser Training";
 				PROVISIONING_PROFILE_SPECIFIER = "";

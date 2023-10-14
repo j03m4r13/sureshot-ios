@@ -1,5 +1,7 @@
 # Xcode
 #
+OpenCVSample_iOS/.DS_Store
+.DS_Store
 build/
 *.pbxuser
 !default.pbxuser
