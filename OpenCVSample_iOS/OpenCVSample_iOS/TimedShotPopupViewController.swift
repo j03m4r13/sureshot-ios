@@ -10,67 +10,73 @@ import UIKit
 import Foundation
 
 class TimedShotPopupViewController: UIViewController {
-    
-    @IBOutlet weak var numberOfRoundTextField: UITextField!
-    @IBOutlet weak var shotIntervalTextField: UITextField!
+    @IBOutlet weak var numRounds: UISlider!
+    @IBOutlet weak var shotInterval: UISlider!
+    @IBOutlet weak var numRoundsLabel: UILabel!
+    @IBOutlet weak var shotIntervalLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        numRounds.isContinuous = false
+        shotInterval.isContinuous = false
+        numRoundsLabel.text = "\(Int(numRounds.value))"
+        shotIntervalLabel.text = "\(Int(shotInterval.value))"
         
+      
         if let shotsPerRound = UserDefaults.standard.string(forKey: "shotsPerRound") {
-            if let shotsRound = Int(shotsPerRound) {
-                print("The saved value is: \(shotsRound)")
-                numberOfRoundTextField.text = String(shotsRound)
-            }
+            let shotsRound = Int(shotsPerRound)
+            print("The saved value is: \(shotsPerRound)")
+            numRounds.value = Float(shotsPerRound) ?? 3.0
         } else {
             print("No value was saved for key 'shotsPerRound'")
             // Save a value to UserDefaults
             let shotsPerRound = 3
-            UserDefaults.standard.set(String(shotsPerRound), forKey: "shotsPerRound")
-            numberOfRoundTextField.text = String(shotsPerRound)
+            UserDefaults.standard.set(shotsPerRound, forKey: "shotsPerRound")
+            numRounds.value = Float(shotsPerRound)
+
         }
-        
         if let shotsInterval = UserDefaults.standard.string(forKey: "shotsInterval") {
-            if let shotsIntervalInt = Int(shotsInterval) {
-                print("The saved value is: \(shotsIntervalInt)")
-                shotIntervalTextField.text = String(shotsIntervalInt)
-            }
+            let shotsIntervalInt = Int(shotsInterval)
+            print("The saved value is: \(shotsInterval)")
+            shotInterval.value = Float(shotsInterval) ?? 5.0
         } else {
-            print("No value was saved for key 'shotsInterval'")
+            print("No value was saved for key 'shotsPerRound'")
             // Save a value to UserDefaults
             let shotsInterval = 5
-            UserDefaults.standard.set(String(shotsInterval), forKey: "shotsInterval")
-            shotIntervalTextField.text = String(shotsInterval)
+            UserDefaults.standard.set(shotsInterval, forKey: "shotsInterval")
+            shotInterval.value = Float(shotsInterval)
+
         }
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true) // This will hide the keyboard for any active text field or text view
-    }
-    
     override var shouldAutorotate: Bool {
         return false
     }
     
     @IBAction func numberOfRoundsSlide(_ sender: Any) {
-        
+        // Update the label's text to match the slider's value
+        let roundedValue = round(numRounds.value)
+        numRounds.value = roundedValue
+        numRoundsLabel.text = "\(Int(numRounds.value))"
     }
-    
+
     @IBAction func shotIntervalSlide(_ sender: Any) {
+        // Update the label's text to match the slider's value
+        let roundedValue = round(shotInterval.value)
+        shotInterval.value = roundedValue
+        shotIntervalLabel.text = "\(Int(shotInterval.value))"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "timedSeqSegue" {
             print("TIMED SEGUE FIRED")
             if let destinationVC = segue.destination as? ViewController {
-                if let shotsPerRound = Int(numberOfRoundTextField.text ?? "") {
-                    UserDefaults.standard.set(String(shotsPerRound), forKey: "shotsPerRound")
-                    numberOfRoundTextField.text = String(shotsPerRound)
-                }
+                let shotsPerRound = Int(numRounds.value)
                 
-                if let shotsInterval = Int(shotIntervalTextField.text ?? "") {
-                    UserDefaults.standard.set(String(shotsInterval), forKey: "shotsInterval")
-                    shotIntervalTextField.text = String(shotsInterval)
-                }
+                UserDefaults.standard.set(shotsPerRound, forKey: "shotsPerRound")
+                numRounds.value = Float(shotsPerRound)
+                let shotsInterval = Int(shotInterval.value)
+                UserDefaults.standard.set(shotsInterval, forKey: "shotsInterval")
+                shotInterval.value = Float(shotsInterval)
 
                 destinationVC.timedShots = true
                 destinationVC.playType = "TimedShots"
@@ -78,10 +84,9 @@ class TimedShotPopupViewController: UIViewController {
             }
         }
     }
-    
     @IBAction func resetSettings(_ sender: Any) {
-        shotIntervalTextField.text = "5"
-        numberOfRoundTextField.text = "5"
+        shotInterval.value = 5
+        numRounds.value = 5
     }
     
     @IBAction func performSegue(_ sender: Any) {
