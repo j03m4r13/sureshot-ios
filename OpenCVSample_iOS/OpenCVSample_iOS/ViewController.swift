@@ -53,7 +53,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var mainTimerRan: Bool! = false
     var numRounds: Int!
     var shotInterval: Int!
-    var timedShotCount: Int!
+    var timedShotCount: Int32!
     var timedShotTimer: Timer?
     var timedShotPreTimer: Timer?
     var timedShotPauseTimer: Timer?
@@ -62,7 +62,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var shooterReadySoundPlaying: Bool! = false
     var isShowingResetPane: Bool! = false;
     var imageReset: UIImage!
-    
+    var unliTempImg: UIImage!
+    var unliShotStarted: Bool! = false
     @objc func setPlayType(_ value: Bool) {
 
         self.timedShots = value
@@ -98,6 +99,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         timerHasRan = false
         preTimerHasRan = false
         timedCountStarted = false
+        unliShotStarted = false
         timerCount = 3
         //playType = ""
         timerPre = nil
@@ -244,6 +246,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.timerCount = 3
         self.timedShotCount = 0
         self.isShowingResetPane = false
+        self.unliShotStarted = false
         
         if(startBtn.currentAttributedTitle?.string == "START"){
             
@@ -624,12 +627,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                             if(!self.isPlaying){
                                 self.isPlaying = true
                                 self.playSound()
-                                
                             }
-
                             self.startShoot(self.startBtn!)
                         })
-                        
                     }
                     DispatchQueue.main.async(execute: {
                         self.imageView.image = self.imageReset
@@ -642,8 +642,20 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                         print("Detected")
                         self.isPlaying = false
                         self.showingResult = true
-                        self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: firstFrameImg, withXYArray: &XYArray, with: -1)
+                        
                         // Create a timer that fires every second and repeats indefinitely
+                        if (!self.unliShotStarted) {
+                            self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: firstFrameImg, withXYArray: &XYArray, with: -1)
+                            self.unliShotStarted = true
+                            self.unliTempImg = firstFrameImg
+                        } else {
+                            self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: firstFrameImg, withXYArray: &XYArray, with: 1)
+                           
+                            self.unliTempImg = OpenCV.showPrevResults(capturedImage, withOrigFrame: self.unliTempImg, withLastShotIndex: 1, withXYArray: &self.XYArray)
+                            self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: self.unliTempImg, withXYArray: &XYArray, with: 0) //
+                        }
+                        
+                            
                         var counterSec = 0
                         
                         let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
@@ -671,8 +683,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                         if(self.showingResult != true) {
                             
                             //self.imageView.image = OpenCV.detectLaser2(capturedImage, withH: self.s1)//capturedImagee
+                            if (self.unliShotStarted){
+                                self.imageView.image = self.resultImg
+                            } else {
+                                self.imageView.image = capturedImage
+                            }
                             
-                            self.imageView.image = capturedImage
                         } else {
                             self.imageView.image = self.resultImg
                             if(!self.isPlaying){
@@ -686,15 +702,21 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
                 } else if (self.playType == "TimedShots"){
                     
-                    if(timerHasRan){
+                    if  (timerHasRan) {
                         let detected = OpenCV.detectLaser(capturedImage, withH: s1)
                         if (detected > 0 && !self.showingResult){
                             self.elapsedTime = ((CACurrentMediaTime() * 1000.0) - self.timeNow) / 1000
                             self.isPlaying = false
                             self.showingResult = true
                         
-                            self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: firstFrameImg, withXYArray: &XYArray, with: shotsCount)
+                            self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: firstFrameImg, withXYArray: &XYArray, with: self.timedShotCount )
                             self.timedShotCount = self.timedShotCount + 1
+                            if (self.timedShotCount > 0) { // super impose previous shots
+                                var tempImg : UIImage!
+                                tempImg = OpenCV.showPrevResults(capturedImage, withOrigFrame: self.resultImg, withLastShotIndex: self.timedShotCount - 1, withXYArray: &self.XYArray)
+                                self.resultImg = OpenCV.detectRed(capturedImage, withOrigFrame: tempImg, withXYArray: &XYArray, with: self.timedShotCount - 1) // just redo previous call hence - 1
+                                
+                            }
                             print("\(XYArray)")
                             // Create a timer that fires every second and repeats indefinitely
                             var counterSec = 0
@@ -730,8 +752,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                         }
                         DispatchQueue.main.async(execute: {
                             if(self.showingResult != true) {
-
-                                self.imageView.image = capturedImage
+                                if (self.timedShotCount > 0) {
+                                    self.imageView.image = self.resultImg
+                                } else {
+                                    self.imageView.image = capturedImage
+                                }
                             } else {
                                 print("TimedShotCount \(self.timedShotCount)")
                                 if(self.timedShotCount >= self.numRounds){

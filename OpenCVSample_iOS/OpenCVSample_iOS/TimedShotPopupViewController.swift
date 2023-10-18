@@ -17,16 +17,16 @@ class TimedShotPopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        numRounds.isContinuous = false
-        shotInterval.isContinuous = false
-        numRoundsLabel.text = "\(Int(numRounds.value))"
-        shotIntervalLabel.text = "\(Int(shotInterval.value))"
+        numRounds.isContinuous = true
+        shotInterval.isContinuous = true
+
         
       
         if let shotsPerRound = UserDefaults.standard.string(forKey: "shotsPerRound") {
             let shotsRound = Int(shotsPerRound)
             print("The saved value is: \(shotsPerRound)")
             numRounds.value = Float(shotsPerRound) ?? 3.0
+            
         } else {
             print("No value was saved for key 'shotsPerRound'")
             // Save a value to UserDefaults
@@ -47,6 +47,8 @@ class TimedShotPopupViewController: UIViewController {
             shotInterval.value = Float(shotsInterval)
 
         }
+        numRoundsLabel.text = "\(Int(numRounds.value))"
+        shotIntervalLabel.text = "\(Int(shotInterval.value))"
     }
     override var shouldAutorotate: Bool {
         return false

@@ -251,26 +251,6 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
     cv::bitwise_not(mat, mat);
     cv::cvtColor(mat, mat1, cv::COLOR_BGR2HSV);
     cv::GaussianBlur(mat, mat1, cv::Size(5.0, 5.0), 0.2);
-//
-//    cv::Scalar lower_range(230, 100, 50);
-//    cv::Scalar upper_range(230, 255, 255);
-//    cv::Scalar lower_range_b(230 , 100, 50);
-////    cv::Scalar upper_range_b(10, 255, 255);
-    // working at night
-//    cv::Scalar lower_range(240, 200, 50);
-//    cv::Scalar upper_range(255, 255, 250);
-//    cv::Scalar lower_range_b(245 , 200, 50);
-//    cv::Scalar upper_range_b(255, 255, 250);
-
-//    cv::Scalar lower_range(50, 200, 20);
-//    cv::Scalar upper_range(100, 255, 250);
-//    cv::Scalar lower_range_b(100 , 200, 20);
-//    cv::Scalar upper_range_b(179, 255, 250);
-    // working for red on black
-//    cv::Scalar lower_range(150, 200, 10);
-//    cv::Scalar upper_range(170, 255, 25);
-//    cv::Scalar lower_range_b(190 , 250, 10);
-//    cv::Scalar upper_range_b(210, 255, 30);
 
     // test for both red on black and white
     cv::Scalar lower_range(50, 70, 10);
@@ -303,6 +283,9 @@ static UIImage *RestoreUIImageOrientation(UIImage *processed, UIImage *original)
         if (index != -1) {
             XYArray[index].x = point.x;
             XYArray[index].y = point.y;
+        } else { //for unli shot only
+            XYArray[0].x = point.x;
+            XYArray[0].y = point.y;
         }
         cv::circle(origFrameMat, cv::Point(shotX, shotY), 7, cv::Scalar(0, 255, 0), 5);
 

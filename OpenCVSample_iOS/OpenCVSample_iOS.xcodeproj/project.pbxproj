@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -370,7 +370,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.13;
+				CURRENT_PROJECT_VERSION = 1.14;
 				DEVELOPMENT_TEAM = R7QJ726R3T;
 				EXCLUDED_ARCHS = armv64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -407,7 +407,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.13;
+				CURRENT_PROJECT_VERSION = 1.14;
 				DEVELOPMENT_TEAM = R7QJ726R3T;
 				EXCLUDED_ARCHS = armv64;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -33,7 +33,9 @@ extension ResultsViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = String(format: "%0.2f", timeRecordsData?[self.timeIndex] ?? 0.0)
+        if (self.timeIndex < timeRecordsData?.count ?? 10) {
+            cell.textLabel?.text = String(format: "%0.2f", timeRecordsData?[self.timeIndex] ?? 0.0)
+        }
         self.timeIndex = self.timeIndex + 1
         
         return cell

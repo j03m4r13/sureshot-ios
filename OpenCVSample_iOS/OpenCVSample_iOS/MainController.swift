@@ -26,6 +26,18 @@ class MainController: UIViewController {
     override var shouldAutorotate: Bool {
         return false
     }
+    
+    @IBAction func openURLTutorial(_ sender: UIButton) {
+        if let url = URL(string: "https://sureshotproducts.com/pages/dryfire-training") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    @IBAction func openURLSite(_ sender: UIButton) {
+        if let url = URL(string: "https://sureshotproducts.com") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "10ShotsSegue" {
             if let destinationVC = segue.destination as? ViewController {

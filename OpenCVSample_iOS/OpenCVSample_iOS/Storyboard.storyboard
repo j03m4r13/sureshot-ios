@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Hh-jw-k8N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Hh-jw-k8N">
     <device id="retina6_12" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -436,6 +436,9 @@
                                                         </fragment>
                                                     </attributedString>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="openURLSite:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8el-Mq-gIj"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldc-m5-DGz">
                                                 <rect key="frame" x="0.0" y="34" width="250" height="68"/>
@@ -453,6 +456,9 @@
                                                         </fragment>
                                                     </attributedString>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="openURLTutorial:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="z67-tM-iZq"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -639,22 +645,22 @@
                                         </connections>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="afi-gp-j1P">
-                                        <rect key="frame" x="38" y="88" width="736" height="30"/>
+                                        <rect key="frame" x="38" y="88" width="478" height="30"/>
                                         <color key="tintColor" systemColor="systemPinkColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="21B-EG-PVU"/>
-                                            <constraint firstAttribute="width" constant="732" id="6ya-xS-3no"/>
+                                            <constraint firstAttribute="width" constant="474" id="6ya-xS-3no"/>
                                         </constraints>
                                         <connections>
                                             <action selector="numberOfRoundsSlide:" destination="ihf-5I-uxH" eventType="valueChanged" id="F1D-xR-vkJ"/>
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="hm8-VW-VvH">
-                                        <rect key="frame" x="38" y="154" width="734" height="30"/>
+                                        <rect key="frame" x="38" y="154" width="478" height="30"/>
                                         <color key="tintColor" systemColor="systemPinkColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="ZsU-PR-ryX"/>
-                                            <constraint firstAttribute="width" constant="730" id="xGF-C1-vyQ"/>
+                                            <constraint firstAttribute="width" constant="474" id="xGF-C1-vyQ"/>
                                         </constraints>
                                         <connections>
                                             <action selector="shotIntervalSlide:" destination="ihf-5I-uxH" eventType="valueChanged" id="3XU-TH-sne"/>
@@ -1273,10 +1279,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Siu-KQ-UgN"/>
+        <segue reference="hSo-dv-510"/>
         <segue reference="gmJ-ug-Abt"/>
         <segue reference="9Tr-nK-v3a"/>
-        <segue reference="R1e-Jh-NVK"/>
+        <segue reference="XsV-Vy-QAG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="1920" height="1080"/>
@@ -1293,10 +1299,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
